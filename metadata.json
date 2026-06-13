@@ -1,0 +1,6 @@
+{
+  "name": "HERSHTIKTEC",
+  "description": "סוכנות פיתוח אתרי פרימיום, נגישים ומהירים לעסקים קטנים ובינוניים. עיצוב בלתי מתפשר, קוד קפדני ופיתוח היברידי מבוסס AI בהנחיה אנושית מנצחת.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

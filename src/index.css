@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Assistant:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Assistant", "Heebo", system-ui, -apple-system, sans-serif;
+  --font-display: "Heebo", "Assistant", system-ui, -apple-system, sans-serif;
+  --font-mono: "Fira Code", monospace;
+  
+  --color-brand-bg: #020617;
+  --color-brand-card: rgba(255, 255, 255, 0.03);
+  --color-brand-cyan: #22d3ee;
+  --color-brand-turquoise: #2dd4bf;
+  --color-brand-blue: #3b82f6;
+  --color-brand-dark-blue: #090e1f;
+  --color-text-dim: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+  direction: rtl;
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism theme style utilities */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.frosted-glass-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.frosted-glass-hover:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(34, 211, 238, 0.25) !important;
+  box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.08) !important;
+  transform: translateY(-4px);
+}
+
+.frosted-glass-header {
+  background: rgba(2, 6, 23, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.frosted-glass-button-secondary {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.frosted-glass-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Accessibility Toolbar Filter Classes */
+body.accessibility-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+body.accessibility-high-contrast {
+  filter: contrast(125%) brightness(105%) !important;
+}
+
+body.accessibility-invert {
+  filter: invert(90%) hue-rotate(180deg) !important;
+}
+
+body.accessibility-readable-font * {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Accessible focus states */
+*:focus-visible {
+  outline: 3px solid #06b6d4 !important;
+  outline-offset: 2px !important;
+}
+
+/* Custom scrollbars for a premium dark feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
+}
+
+
