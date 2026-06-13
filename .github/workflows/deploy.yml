@@ -3,9 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # מפעיל את האוטומציה בכל פעם שאתה עושה Push לענף הראשי
+      - main
 
-# הגדרת הרשאות חובה עבור GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -29,10 +28,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Project
         run: npm run build
