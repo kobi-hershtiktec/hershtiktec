@@ -83,6 +83,15 @@ export default function Portfolio() {
                 className="group relative flex flex-col overflow-hidden rounded-2xl frosted-glass frosted-glass-hover cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/5"
                 id={`project-card-${project.id}`}
               >
+                {/* הוספת קישור שעוטף את כל תוכן הכרטיסייה */}
+                <a 
+                  href="https://www.hershtikcapital.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="absolute inset-0 z-10"
+                  aria-label={`פתח את האתר: ${project.title}`}
+                />
+
                 {/* Image Container with Cyan Tech Overlay */}
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900" id={`project-img-wrap-${project.id}`}>
                   <img
@@ -96,7 +105,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90" />
                   
                   {/* Category & Performance badges */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-1.5 items-end">
+                  <div className="absolute top-4 right-4 flex flex-col gap-1.5 items-end z-20">
                     <span className="rounded-full bg-slate-900/90 backdrop-blur border border-slate-800 px-3 py-1 text-xs font-bold text-slate-200">
                       {categories.find(c => c.id === project.category)?.name}
                     </span>
