@@ -5,7 +5,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    // פותר את בעיית המסך הלבן ב-GitHub Pages
     base: '/hershtiktec/', 
     plugins: [react(), tailwindcss()],
     resolve: {
