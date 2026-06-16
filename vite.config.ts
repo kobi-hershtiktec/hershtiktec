@@ -5,7 +5,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/hershtiktec/', 
+    // מוגדר כסלאש בודד עבור דומיין אישי ראשי
+    base: '/', 
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
