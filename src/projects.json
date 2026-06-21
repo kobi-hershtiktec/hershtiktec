@@ -1,7 +1,18 @@
 [
   {
+    "id": "aura-luxury",
+    "title": "AURA - חנות מותג קוסמטיקה ואופנת יוקרה",
+    "description": "חנות דרופשיפינג למוצרי טיפוח יוקרתיים מתוך קולקציית AURA האקסקלוסיבית. הפרויקט פותח עם דגש עילאי על מהירות טעינה גבוהה, קוד חסין תקלות, שפה עיצובית שייקית ויוקרתית, ונגישות מושלמת להמרות שיא.",
+    "category": "e-commerce",
+    "image": "https://api.microlink.io/?url=https%3A%2F%2Fkobi-hershtiktec.github.io%2FAura%2F&screenshot=true&embed=screenshot.url&waitForTimeout=5000&viewport.width=1280&viewport.height=800",
+    "link": "https://kobi-hershtiktec.github.io/Aura/",
+    "technologies": ["HTML", "CSS", "JS", "E-Commerce"],
+    "metrics": "זמן טעינה 0.8s |  100% Mobile",
+    "accessibilityFeatures": ["תהליך רכישה קל, נגיש ומהיר", "שילוב גוני פוקוס וניגודיות אלגנטית", "תאימות מלאה לטקסט חלופי ותקינות קוד"]
+  },
+  {
     "id": "hershtik-capital",
-    "title": "פלטפורמת השקעות נדל\"ן בארה\"ב - Hershtik Capital",
+    "title": "פלטפורמת השקעות נדל\"ן בארה\"ב",
     "description": "פלטפורמת פרימיום יוקרתית להשקעות נדל\"ן מניב בארצות הברית. פותחה עם דגש על שפה עיצובית אקלוסיבית, מהירות טעינה פנומנלית וחוויית משתמש חלקה ומניעה לפעולה.",
     "category": "corporate",
     "image": "https://api.microlink.io/?url=https%3A%2F%2Fwww.hershtikcapital.com%2F&screenshot=true&embed=screenshot.url&waitForTimeout=5000&viewport.width=1280&viewport.height=800",
@@ -11,47 +22,14 @@
     "accessibilityFeatures": ["חוויית גלישה חלקה בנייד ונייח", "ניגודיות צבעים יוקרתית עשירה", "תגיות נגישות מלאות"]
   },
   {
-    "id": "shoham-law",
-    "title": "אתר פרימיום למשרד עורכי דין שוהם ושות'",
-    "description": "מערכת ייצוגית, שקטה ויוקרתית המבליטה את הישגי המשרד. האתר נבנה עם דגש מחמיר על חוק הנגישות וניווט מקלדת מלא.",
+    "id": "by-renovations",
+    "title": "י.ב שיפוצים - עבודות גמר ושיפוצים",
+    "description": "אתר תדמית יוקרתי להצגת פרויקטים ועבודות גמר בתחום השיפוצים והבנייה. האתר מציג גלריית עבודות מרשימה, חוויית משתמש חלקה וממשק מהיר שמניע לפניה לעסק.",
     "category": "corporate",
-    "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
-    "link": "https://example.com",
-    "technologies": ["React", "Tailwind CSS", "Semantic HTML", "WAI-ARIA"],
-    "metrics": "מהירות 99 | נגישות AA",
-    "accessibilityFeatures": ["ניווט מקלדת בלעדי", "קריא ע\"י NVDA / JAWS", "ביטול הנפשות אקטיבי"]
-  },
-  {
-    "id": "paysmart-fintech",
-    "title": "מערכת פינטק וניהול פיננסי PaySmart",
-    "description": "דשבורד אינטראקטיבי מתקדם עבור ניהול תזרים מזומנים ותשלומים בזמן אמת. פותח במודל היברידי מהיר עם אנימציות עדינות.",
-    "category": "corporate",
-    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    "link": "https://example.com",
-    "technologies": ["Vite", "Recharts", "Motion", "Express API"],
-    "metrics": "מהירות 97 | 60 FPS",
-    "accessibilityFeatures": ["ניגודיות צבעים 7:1", "תיאורי תמונות אלטרנטיביים מלאים"]
-  },
-  {
-    "id": "nefesh-ngo",
-    "title": "מערכת תרומות לעמותת 'נפש אל נפש'",
-    "description": "דף נחיתה רגשי וממוקד המגדיל את אחוזי התרומה בתוך האפליקציה. חוברו ספקי סליקה מונגשים ומערכת הפקת חשבוניות אוטומטית.",
-    "category": "landing",
-    "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
-    "link": "https://example.com",
-    "technologies": ["React", "Stripe API", "Google Analytics", "Vite"],
-    "metrics": "שיפור יחס המרה +42%",
-    "accessibilityFeatures": ["תהליך סליקה פשטני ונגיש", "טפסים מונגשים וחיווי קולי"]
-  },
-  {
-    "id": "urbanstyle-shop",
-    "title": "בוטיק האופנה הדיגיטלי UrbanStyle",
-    "description": "חנות אונליין המשלבת קטלוג תלת-מימדי מותאם אישית לחוויית רכישה מהירה. ממשק מהיר שאינו קופא גם בחיבור מובייל איטי.",
-    "category": "e-commerce",
-    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80",
-    "link": "https://example.com",
-    "technologies": ["React 19", "Tailwind v4", "Commerce.js", "Motion"],
-    "metrics": "זמן טעינה 1.1s",
-    "accessibilityFeatures": ["תפריט סינון נגיש לגמרי", "פוקוס ברור להוספה לסל"]
+    "image": "https://api.microlink.io/?url=https%3A%2F%2Fkobi-hershtiktec.github.io%2FB.Y-renovations%2F%23gallery&screenshot=true&embed=screenshot.url&waitForTimeout=5000&viewport.width=1280&viewport.height=800",
+    "link": "https://kobi-hershtiktec.github.io/B.Y-renovations/#gallery",
+    "technologies": ["HTML", "CSS", "JS", "Responsive Design"],
+    "metrics": "-",
+    "accessibilityFeatures": ["ניווט מקלדת נוח וברור", "גלריית תמונות מונגשת", "חוויית שימוש מותאמת לנייד"]
   }
 ]

@@ -131,7 +131,7 @@ export default function App() {
       <Navbar activeHash={activeHash} />
 
       {/* Primary Page Layout Sections */}
-      <main id="main-content" className="overflow-hidden">
+      <main id="main-content" className="relative z-10 overflow-hidden">
         <AnimatePresence mode="wait">
           {renderActivePage()}
         </AnimatePresence>

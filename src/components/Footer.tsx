@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageSquare, Phone, Mail, FileText, ChevronUp, Github, Linkedin } from "lucide-react";
+import { MessageSquare, Phone, Mail, FileText, ChevronUp } from "lucide-react";
 import Logo from "./Logo";
 
 export default function Footer() {
@@ -80,43 +80,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Links Column 3: Social & Shortcuts (2 Columns) */}
-          <div className="md:col-span-2 space-y-3" id="footer-social-panel">
-            <h4 className="text-white font-bold font-display text-[15px]">רשתות חברתיות</h4>
-            <div className="flex items-center gap-3 mt-3">
-              <a 
-                href={whatsappUrl} 
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-350 hover:text-green-400 hover:border-green-400/50 transition-all hover:scale-105"
-                aria-label="שלחו לנו הודעה ישירה בוואטסאפ"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageSquare className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-350 hover:text-blue-400 hover:border-blue-400/50 transition-all hover:scale-105"
-                aria-label="עקבו אחרינו בלינקדאין"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://github.com" 
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-350 hover:text-white hover:border-white/30 transition-all hover:scale-105"
-                aria-label="עיינו בקוד הפתוח שלנו בגיטהאב"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-            </div>
-            
+          {/* Links Column 3: Shortcuts & Navigation (2 Columns) */}
+          <div className="md:col-span-2 space-y-3 flex flex-col justify-between" id="footer-social-panel">
             {/* Scroll straight to top */}
             <button
               onClick={handleScrollTop}
-              className="mt-4 inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer py-1"
+              className="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer py-1"
               aria-label="חזרה לראש האתר"
             >
               <ChevronUp className="h-4 w-4" />

@@ -23,11 +23,6 @@ export default function FAQ() {
       answer: "בזכות המודל ההיברידי המתקדם שלנו, דף נחיתה איכותי וממוקד נמסר לרוב תוך 5 עד 7 ימי עסקים בלבד. אתר תדמית מרובה עמודים או חנות אונליין נבנים ונמסרים תוך 14 עד 21 ימי עסקים. כל שלבי האספקה ולוחות הזמנים מוגדרים בצורה קשיחה מראש בחוזה העבודה."
     },
     {
-      id: "site-maintenance",
-      question: "האם אני מקבל הדרכה על ניהול האתר ותחזוקתו?",
-      answer: "בוודאי. אנו נמסור לכם סרטון הדרכה מצולם ואישי המיועד עבורכם. האתר נבנה בצורה המאפשרת עדכוני טקסט, הפקת פוסטים חדשים, שינויי תמונות וניהול פניות בדרך פשוטה ומהירה ללא צורך בידע בקוד."
-    },
-    {
       id: "landing-vs-website",
       question: "מה ההבדל בין דף נחיתה לאתר אינטרנט מלא?",
       answer: "דף נחיתה הוא עמוד בודד וממוקד במטרה אחת ברורה – להניע את הגולש לפעולה קונקרטית (כמו השארת פרטים בטופס או רכישת מוצר ספציפי), והוא מושלם לקמפיינים ופרסום ממומן. אתר אינטרנט מלא, לעומת זאת, הוא פלטפורמה מרובת עמודים המציגה את מגוון השירותים, ערכי המותג, סיפור העסק וערוצי יצירת קשר שונים. אתר מלא מיועד לבניית סמכות, נוכחות מקיפה בגוגל וחיבור אורגני ארוך טווח עם לקוחותיכם."
@@ -41,16 +36,35 @@ export default function FAQ() {
   return (
     <section 
       id="faq" 
-      className="bg-brand-bg py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900"
+      className="bg-brand-bg py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden"
       aria-labelledby="faq-heading"
     >
-      <div className="mx-auto max-w-4xl">
+      {/* Quantum Glow elements from design theme */}
+      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(34,_211,_238,_0.15)_0%,_transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(59,_130,_246,_0.1)_0%,_transparent_70%)] pointer-events-none z-0" />
+
+      {/* Visual background accents: neon radial glows & technical grid mesh */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/15 via-brand-bg to-brand-bg pointer-events-none" />
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)] opacity-[0.2] pointer-events-none" 
+        id="cyber-grid"
+      />
+
+      {/* Subtle giant rotating background brand logo watermark */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] md:w-[1150px] md:h-[1150px] opacity-[0.04] pointer-events-none select-none z-0 overflow-hidden">
+        <motion.img 
+          src="/favicon.png" 
+          alt="" 
+          className="w-full h-full object-contain"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
+        />
+      </div>
+
+      <div className="mx-auto max-w-4xl relative z-10">
         
         {/* Section Title */}
         <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 font-mono bg-cyan-950/50 px-3 py-1 rounded-full border border-cyan-500/20" id="faq-badge">
-            שאלות נפוצות
-          </span>
           <h2 
             id="faq-heading" 
             className="mt-4 text-3xl sm:text-4xl font-extrabold text-white font-display"

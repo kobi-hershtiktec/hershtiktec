@@ -62,24 +62,35 @@ export default function Services() {
   return (
     <section 
       id="services" 
-      className="bg-brand-bg py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative"
+      className="bg-brand-bg py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-900 relative overflow-hidden"
       aria-labelledby="services-heading"
     >
-      {/* Decorative side glows */}
-      <div className="absolute top-1/4 right-0 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl pointer-events-none" />
+      {/* Quantum Glow elements from design theme */}
+      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(34,_211,_238,_0.15)_0%,_transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(59,_130,_246,_0.1)_0%,_transparent_70%)] pointer-events-none z-0" />
+
+      {/* Visual background accents: neon radial glows & technical grid mesh */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/15 via-brand-bg to-brand-bg pointer-events-none" />
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)] opacity-[0.2] pointer-events-none" 
+        id="cyber-grid"
+      />
+
+      {/* Subtle giant rotating background brand logo watermark */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] md:w-[1150px] md:h-[1150px] opacity-[0.04] pointer-events-none select-none z-0 overflow-hidden">
+        <motion.img 
+          src="/favicon.png" 
+          alt="" 
+          className="w-full h-full object-contain"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
+        />
+      </div>
 
       <div className="mx-auto max-w-7xl">
         
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span 
-            className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-cyan-300 font-mono bg-gradient-to-r from-cyan-950/60 to-slate-900/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-cyan-500/20 shadow-[0_0_12px_rgba(34,211,238,0.06)] hover:border-cyan-400/40 transition-all duration-300" 
-            id="services-badge"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
-            <span>מה אנחנו עושים</span>
-          </span>
           <h2 
             id="services-heading" 
             className="mt-4 text-3xl sm:text-4xl font-extrabold text-white font-display"
