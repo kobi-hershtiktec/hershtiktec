@@ -86,7 +86,7 @@ function SelectedWork() {
             עבודות נבחרות
           </h2>
           <a
-            href="#portfolio"
+            href="/portfolio/"
             className="group inline-flex shrink-0 items-center gap-2 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
           >
             כל העבודות

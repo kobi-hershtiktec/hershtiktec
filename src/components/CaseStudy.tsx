@@ -16,7 +16,7 @@ export default function CaseStudy() {
           <h3 className="mt-3 text-2xl font-semibold leading-snug tracking-tight text-fg md:text-3xl">{caseStudy.title}</h3>
           <p className="mt-2 text-fg-muted">עבור {caseStudy.client}</p>
           <a
-            href="#case-fruit"
+            href="/case-studies/fruit-delivery-system/"
             className="group mt-6 inline-flex items-center gap-2 font-medium text-accent transition-colors hover:text-accent-strong"
           >
             לסיפור המלא, עם צילומי מסך
@@ -36,7 +36,7 @@ export default function CaseStudy() {
         </dl>
       </div>
 
-      <a href="#case-fruit" className="group block px-8 md:px-12" aria-label="לסיפור המלא של מערכת תעודות המשלוח">
+      <a href="/case-studies/fruit-delivery-system/" className="group block px-8 md:px-12" aria-label="לסיפור המלא של מערכת תעודות המשלוח">
         <div className="relative h-56 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:h-80">
           <img
             src="/work/fruit/dashboard.jpg"

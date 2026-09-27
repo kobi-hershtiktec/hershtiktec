@@ -31,10 +31,10 @@ export default function Solutions() {
                 {CTA_CONTACT}
               </a>
               <a
-                href="#services"
+                href="/automations/"
                 className="group inline-flex items-center justify-center gap-2 px-2 py-3 text-base font-medium text-fg-muted transition-colors hover:text-fg"
               >
-                מה עוד אפשר לבנות
+                לכל הפרטים על אוטומציות
                 <ArrowLeft size={18} aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-x-1" />
               </a>
             </div>

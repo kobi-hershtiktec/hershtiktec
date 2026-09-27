@@ -362,7 +362,7 @@ export default function AccessibilityToolbar() {
                   איפוס כל ההגדרות לברירת מחדל
                 </button>
                 <a
-                  href="#accessibility"
+                  href="/accessibility/"
                   onClick={() => setIsOpen(false)}
                   className="mt-3 block text-center text-sm text-cyan-300 underline-offset-4 hover:underline"
                 >

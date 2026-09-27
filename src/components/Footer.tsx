@@ -3,17 +3,18 @@ import Logo from "./Logo";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from "../site";
 
 const siteLinks = [
-  { name: "ראשי", href: "#home" },
-  { name: "שירותים", href: "#services" },
-  { name: "תיק עבודות", href: "#portfolio" },
-  { name: "מי אנחנו", href: "#about" },
-  { name: "שאלות ותשובות", href: "#faq" },
-  { name: "צור קשר", href: "#contact" },
+  { name: "ראשי", href: "/" },
+  { name: "שירותים", href: "/services/" },
+  { name: "אוטומציות", href: "/automations/" },
+  { name: "תיק עבודות", href: "/portfolio/" },
+  { name: "מי אנחנו", href: "/about/" },
+  { name: "שאלות ותשובות", href: "/faq/" },
+  { name: "צור קשר", href: "/contact/" },
 ];
 
 const legalLinks = [
-  { name: "הצהרת נגישות", href: "#accessibility" },
-  { name: "מדיניות פרטיות", href: "#privacy" },
+  { name: "הצהרת נגישות", href: "/accessibility/" },
+  { name: "מדיניות פרטיות", href: "/privacy/" },
 ];
 
 export default function Footer() {

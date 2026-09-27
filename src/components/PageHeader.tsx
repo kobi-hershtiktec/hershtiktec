@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "../site";
+import { introAllowed } from "../intro";
 
 interface PageHeaderProps {
   id: string;
@@ -14,7 +15,7 @@ export default function PageHeader({ id, title, intro, children }: PageHeaderPro
   const reduce = useReducedMotion();
   return (
     <motion.header
-      initial={reduce ? false : { opacity: 0, y: 16 }}
+      initial={reduce || !introAllowed() ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: EASE }}
       className="max-w-3xl"

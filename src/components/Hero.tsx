@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import projectsData from "../projects.json";
 import { Project } from "../types";
 import { CATEGORY_NAMES, CTA_CONTACT, CTA_WORK, EASE, WHATSAPP_URL } from "../site";
+import { introAllowed } from "../intro";
 
 const projects = projectsData as Project[];
 const CYCLE_MS = 5500;
@@ -103,7 +104,7 @@ function WorkShowcase() {
 export default function Hero() {
   const reduce = useReducedMotion();
   const rise = (delay: number) => ({
-    initial: reduce ? false : { opacity: 0, y: 18 },
+    initial: reduce || !introAllowed() ? false : { opacity: 0, y: 18 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.8, delay, ease: EASE },
   });
@@ -122,7 +123,7 @@ export default function Hero() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6">
           <motion.a
-            href="#about"
+            href="/about/"
             {...rise(0)}
             className="inline-flex items-center gap-3 rounded-full border border-line py-1.5 pe-4 ps-1.5 text-sm text-fg-muted transition-colors hover:border-line-strong hover:text-fg"
           >
@@ -155,7 +156,7 @@ export default function Hero() {
               {CTA_CONTACT}
             </a>
             <a
-              href="#portfolio"
+              href="/portfolio/"
               className="group inline-flex items-center justify-center gap-2 px-2 py-3 text-base font-medium text-fg transition-colors hover:text-accent"
             >
               {CTA_WORK}
@@ -166,7 +167,7 @@ export default function Hero() {
 
         <motion.div
           className="lg:col-span-6"
-          initial={reduce ? false : { opacity: 0, y: 32 }}
+          initial={reduce || !introAllowed() ? false : { opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.2, ease: EASE }}
         >

@@ -5,32 +5,32 @@ import Logo from "./Logo";
 import { CTA_CONTACT, CTA_CONTACT_SHORT, EASE, WHATSAPP_URL } from "../site";
 
 interface NavbarProps {
-  activeHash: string;
+  activePath: string;
 }
 
 const navLinks = [
-  { name: "ראשי", href: "#home" },
-  { name: "שירותים", href: "#services" },
-  { name: "תיק עבודות", href: "#portfolio" },
-  { name: "מי אנחנו", href: "#about" },
-  { name: "שאלות ותשובות", href: "#faq" },
-  { name: "צור קשר", href: "#contact" },
+  { name: "ראשי", href: "/" },
+  { name: "שירותים", href: "/services/" },
+  { name: "אוטומציות", href: "/automations/" },
+  { name: "תיק עבודות", href: "/portfolio/" },
+  { name: "מי אנחנו", href: "/about/" },
+  { name: "שאלות ותשובות", href: "/faq/" },
+  { name: "צור קשר", href: "/contact/" },
 ];
 
-export default function Navbar({ activeHash }: NavbarProps) {
+export default function Navbar({ activePath }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const reduce = useReducedMotion();
 
   // Close the mobile drawer whenever the page changes
-  useEffect(() => setIsOpen(false), [activeHash]);
+  useEffect(() => setIsOpen(false), [activePath]);
 
-  const isActive = (href: string) =>
-    activeHash === href || (href === "#home" && (activeHash === "" || activeHash === "#"));
+  const isActive = (href: string) => activePath === href;
 
   return (
     <header className="nav-glass sticky top-0 z-50 border-b border-line" id="main-navigation-header">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="shrink-0 rounded-md" aria-label="HERSHTIKTEC דף הבית">
+        <a href="/" className="shrink-0 rounded-md" aria-label="HERSHTIKTEC דף הבית">
           <Logo />
         </a>
 

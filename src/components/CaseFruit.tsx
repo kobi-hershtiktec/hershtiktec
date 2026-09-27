@@ -42,7 +42,7 @@ export default function CaseFruit() {
     <>
       <section className="px-4 pb-16 pt-12 sm:px-6 md:pt-16 lg:px-8" aria-labelledby="case-heading">
         <div className="mx-auto max-w-7xl">
-          <a href="#services" className="group mb-10 inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-fg">
+          <a href="/services/" className="group mb-10 inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-fg">
             <ArrowRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
             חזרה לשירותים
           </a>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Browsers, Cpu, Wheelchair, FlowArrow, Wrench, Check } from "@phosphor-icons/react";
+import { Browsers, Cpu, Wheelchair, FlowArrow, Wrench, Check, ArrowLeft } from "@phosphor-icons/react";
 import PageHeader from "./PageHeader";
 import Reveal from "./Reveal";
 import CtaBand from "./CtaBand";
@@ -60,7 +60,7 @@ const websiteServices: Service[] = [
   },
 ];
 
-const timeServices: Service[] = [
+export const timeServices: Service[] = [
   {
     id: "automations",
     icon: FlowArrow,
@@ -91,7 +91,7 @@ const timeServices: Service[] = [
   },
 ];
 
-function ServiceRow({ service, index }: { service: Service; index: number; key?: React.Key }) {
+export function ServiceRow({ service, index }: { service: Service; index: number; key?: React.Key }) {
   const Icon = service.icon;
   return (
     <Reveal
@@ -166,7 +166,13 @@ export default function Services() {
             {timeServices.map((s, i) => (
               <ServiceRow key={s.id} service={s} index={i} />
             ))}
-            <div className="mt-6">
+            <Reveal className="border-t border-line py-10">
+              <a href="/automations/" className="group inline-flex items-center gap-2 text-lg font-medium text-accent transition-colors hover:text-accent-strong">
+                לכל הפרטים על אוטומציות וכלים מותאמים
+                <ArrowLeft size={20} aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-x-1" />
+              </a>
+            </Reveal>
+            <div className="mt-2">
               <CaseStudy />
             </div>
           </section>
