@@ -1,35 +1,32 @@
 [
   {
-    "id": "aura-luxury",
-    "title": "AURA - חנות מותג קוסמטיקה ואופנת יוקרה",
-    "description": "חנות דרופשיפינג למוצרי טיפוח יוקרתיים מתוך קולקציית AURA האקסקלוסיבית. הפרויקט פותח עם דגש עילאי על מהירות טעינה גבוהה, קוד חסין תקלות, שפה עיצובית שייקית ויוקרתית, ונגישות מושלמת להמרות שיא.",
-    "category": "e-commerce",
-    "image": "https://api.microlink.io/?url=https%3A%2F%2Fkobi-hershtiktec.github.io%2FAura%2F&screenshot=true&embed=screenshot.url&waitForTimeout=5000&viewport.width=1280&viewport.height=800",
-    "link": "https://kobi-hershtiktec.github.io/Aura/",
-    "technologies": ["HTML", "CSS", "JS", "E-Commerce"],
-    "metrics": "זמן טעינה 0.8s |  100% Mobile",
-    "accessibilityFeatures": ["תהליך רכישה קל, נגיש ומהיר", "שילוב גוני פוקוס וניגודיות אלגנטית", "תאימות מלאה לטקסט חלופי ותקינות קוד"]
+    "id": "hershtik-capital",
+    "title": "Hershtik Capital",
+    "description": "אתר תדמית לחברת השקעות נדל\"ן בארה\"ב. שפה עיצובית שמרנית ויוקרתית, מבנה שמוביל משקיעים ומוכרים ישר לפנייה.",
+    "category": "corporate",
+    "image": "/work/hershtik-capital.jpg",
+    "mobileImage": "/work/hershtik-capital-mobile.jpg",
+    "link": "https://www.hershtikcapital.com/",
+    "technologies": ["React", "Tailwind CSS", "Motion"]
   },
   {
-    "id": "hershtik-capital",
-    "title": "פלטפורמת השקעות נדל\"ן בארה\"ב",
-    "description": "פלטפורמת פרימיום יוקרתית להשקעות נדל\"ן מניב בארצות הברית. פותחה עם דגש על שפה עיצובית אקלוסיבית, מהירות טעינה פנומנלית וחוויית משתמש חלקה ומניעה לפעולה.",
-    "category": "corporate",
-    "image": "https://api.microlink.io/?url=https%3A%2F%2Fwww.hershtikcapital.com%2F&screenshot=true&embed=screenshot.url&waitForTimeout=5000&viewport.width=1280&viewport.height=800",
-    "link": "https://www.hershtikcapital.com/",
-    "technologies": ["React", "Motion", "Tailwind CSS", "SEO Optimized"],
-    "metrics": "זמן טעינה 0.9s | מהירות 100",
-    "accessibilityFeatures": ["חוויית גלישה חלקה בנייד ונייח", "ניגודיות צבעים יוקרתית עשירה", "תגיות נגישות מלאות"]
+    "id": "aura-luxury",
+    "title": "AURA",
+    "description": "חנות אונליין למותג אופנה וטיפוח. תהליך רכישה קצר, טעינה מהירה בנייד ואווירה של בוטיק.",
+    "category": "e-commerce",
+    "image": "/work/aura.jpg",
+    "mobileImage": "/work/aura-mobile.jpg",
+    "link": "https://kobi-hershtiktec.github.io/Aura/",
+    "technologies": ["HTML", "CSS", "JavaScript"]
   },
   {
     "id": "by-renovations",
-    "title": "י.ב שיפוצים - עבודות גמר ושיפוצים",
-    "description": "אתר תדמית יוקרתי להצגת פרויקטים ועבודות גמר בתחום השיפוצים והבנייה. האתר מציג גלריית עבודות מרשימה, חוויית משתמש חלקה וממשק מהיר שמניע לפניה לעסק.",
+    "title": "י.ב שיפוצים",
+    "description": "אתר תדמית לצוות שיפוצים. גלריית לפני ואחרי, הצעת מחיר בלחיצה וחיוג ישיר מהנייד.",
     "category": "corporate",
-    "image": "https://api.microlink.io/?url=https%3A%2F%2Fkobi-hershtiktec.github.io%2FB.Y-renovations%2F%23gallery&screenshot=true&embed=screenshot.url&waitForTimeout=5000&viewport.width=1280&viewport.height=800",
-    "link": "https://kobi-hershtiktec.github.io/B.Y-renovations/#gallery",
-    "technologies": ["HTML", "CSS", "JS", "Responsive Design"],
-    "metrics": "-",
-    "accessibilityFeatures": ["ניווט מקלדת נוח וברור", "גלריית תמונות מונגשת", "חוויית שימוש מותאמת לנייד"]
+    "image": "/work/by-renovations.jpg",
+    "mobileImage": "/work/by-renovations-mobile.jpg",
+    "link": "https://kobi-hershtiktec.github.io/B.Y-renovations/",
+    "technologies": ["HTML", "CSS", "JavaScript"]
   }
 ]

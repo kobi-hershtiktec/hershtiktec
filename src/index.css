@@ -1,64 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Assistant:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+@import "@fontsource/ibm-plex-sans-hebrew/300.css";
+@import "@fontsource/ibm-plex-sans-hebrew/400.css";
+@import "@fontsource/ibm-plex-sans-hebrew/500.css";
+@import "@fontsource/ibm-plex-sans-hebrew/600.css";
+@import "@fontsource/ibm-plex-sans-hebrew/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 @import "tailwindcss";
 
+/*
+ * Design tokens. The brand is dark by identity (logo is cyan on near-black),
+ * so the site ships a single dark theme. One accent (logo cyan, desaturated),
+ * one neutral family (cool graphite). Radius system: interactive = pill,
+ * surfaces/media = 16px (rounded-2xl).
+ */
 @theme {
-  --font-sans: "Assistant", "Heebo", system-ui, -apple-system, sans-serif;
-  --font-display: "Heebo", "Assistant", system-ui, -apple-system, sans-serif;
-  --font-mono: "Fira Code", monospace;
-  
-  --color-brand-bg: #020617;
-  --color-brand-card: rgba(255, 255, 255, 0.03);
-  --color-brand-cyan: #22d3ee;
-  --color-brand-turquoise: #2dd4bf;
-  --color-brand-blue: #3b82f6;
-  --color-brand-dark-blue: #090e1f;
-  --color-text-dim: #94a3b8;
+  --font-sans: "IBM Plex Sans Hebrew", system-ui, -apple-system, sans-serif;
+  --font-display: "IBM Plex Sans Hebrew", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink: #0b0d10;
+  --color-ink-2: #111418;
+  --color-ink-3: #181c22;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.14);
+  --color-fg: #eceef0;
+  --color-fg-muted: #a1a9b3;
+  --color-fg-subtle: #7f8894;
+  --color-accent: #4cc9dc;
+  --color-accent-strong: #7ad9e8;
+  --color-on-accent: #04191d;
+
+  /* Legacy aliases still referenced by the accessibility toolbar */
+  --color-brand-bg: #0b0d10;
+  --color-brand-cyan: #4cc9dc;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
   scroll-behavior: smooth;
   direction: rtl;
   font-family: var(--font-sans);
+  background: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Glassmorphism theme style utilities */
-.frosted-glass {
-  background: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+body {
+  background: var(--color-ink);
+  color: var(--color-fg);
 }
 
-.frosted-glass-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* Film grain on a fixed, non-interactive layer (never on scrolling content) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.frosted-glass-hover:hover {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(34, 211, 238, 0.25) !important;
-  box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.08) !important;
-  transform: translateY(-4px);
+h1,
+h2,
+h3,
+blockquote {
+  text-wrap: balance;
 }
 
-.frosted-glass-header {
-  background: rgba(2, 6, 23, 0.75) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+p {
+  text-wrap: pretty;
 }
 
-.frosted-glass-button-secondary {
-  background: rgba(255, 255, 255, 0.04) !important;
-  backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-  transition: all 0.2s ease-in-out;
+::selection {
+  background: rgb(76 201 220 / 0.25);
+  color: #ffffff;
 }
 
-.frosted-glass-button-secondary:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+/* Frosted nav bar, solid fallback when transparency is reduced */
+.nav-glass {
+  background: rgb(11 13 16 / 0.72);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .nav-glass {
+    background: var(--color-ink);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* Accessibility Toolbar Filter Classes */
@@ -81,27 +114,31 @@ body.accessibility-readable-font * {
 
 /* Accessible focus states */
 *:focus-visible {
-  outline: 3px solid #06b6d4 !important;
-  outline-offset: 2px !important;
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 3px !important;
 }
 
-/* Custom scrollbars for a premium dark feel */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: var(--color-ink);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 4px;
+  background: #262b33;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #22d3ee;
+  background: #353c46;
 }
-
-

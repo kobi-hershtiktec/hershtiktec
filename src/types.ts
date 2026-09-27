@@ -4,19 +4,9 @@ export interface Project {
   description: string;
   category: string;
   image: string;
+  mobileImage?: string;
   link: string;
   technologies: string[];
-  metrics?: string;
-  accessibilityFeatures?: string[];
-}
-
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  iconName: string;
-  features: string[];
-  techStack: string[];
 }
 
 export interface FAQItem {

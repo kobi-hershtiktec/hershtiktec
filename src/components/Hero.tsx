@@ -1,124 +1,177 @@
-import React from "react";
-import { ArrowLeft, MessageCircle, Star, ShieldCheck, Zap } from "lucide-react";
-import { motion } from "motion/react";
+import React, { useEffect, useState } from "react";
+import { ArrowLeft, WhatsappLogo } from "@phosphor-icons/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import projectsData from "../projects.json";
+import { Project } from "../types";
+import { CATEGORY_NAMES, CTA_CONTACT, CTA_WORK, EASE, WHATSAPP_URL } from "../site";
 
-export default function Hero() {
-  const whatsappUrl = "https://wa.me/972505712342?text=שלום%20רב,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20בניית%20אתר%20פרימיום%2520מ-HERSHTIKTEC";
-  
+const projects = projectsData as Project[];
+const CYCLE_MS = 5500;
+
+function hostOf(url: string) {
+  return new URL(url).hostname.replace(/^www\./, "");
+}
+
+// Real screenshots of shipped client sites, rotating to show range of work.
+function WorkShowcase() {
+  const reduce = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const current = projects[index];
+
+  useEffect(() => {
+    if (reduce) return;
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % projects.length), CYCLE_MS);
+    return () => window.clearInterval(id);
+  }, [reduce, index]);
+
+  const fade = {
+    initial: reduce ? false : { opacity: 0, scale: 1.02 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.9, ease: EASE },
+  } as const;
+
   return (
-    <section 
-      id="home" 
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-brand-bg py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-900"
-      aria-label="מבוא ואזור ראשי"
-    >
-      {/* Quantum Glow elements from design theme */}
-      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(34,_211,_238,_0.15)_0%,_transparent_70%)] pointer-events-none z-0" />
-      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(59,_130,_246,_0.1)_0%,_transparent_70%)] pointer-events-none z-0" />
-
-      {/* Visual background accents: neon radial glows & technical grid mesh */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/15 via-brand-bg to-brand-bg pointer-events-none" />
-      <div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)] opacity-[0.2] pointer-events-none" 
-        id="cyber-grid"
-      />
-
-      {/* Subtle giant rotating background brand logo watermark */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] md:w-[1150px] md:h-[1150px] opacity-[0.04] pointer-events-none select-none z-0 overflow-hidden">
-        <motion.img 
-          src="/favicon.png" 
-          alt="" 
-          className="w-full h-full object-contain"
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
-        />
+    <div className="relative">
+      {/* Desktop frame */}
+      <div className="overflow-hidden rounded-2xl border border-line-strong bg-ink-2 shadow-[0_40px_120px_-40px_rgb(0_0_0/0.8)]">
+        <div className="flex h-9 items-center justify-center border-b border-line bg-ink-3/80">
+          <span className="font-mono text-[11px] text-fg-subtle" dir="ltr">{hostOf(current.link)}</span>
+        </div>
+        <div className="relative aspect-[16/10] overflow-hidden bg-ink-3">
+          <AnimatePresence initial={false}>
+            <motion.img
+              key={current.id}
+              src={current.image}
+              alt={`צילום מסך של האתר ${current.title}`}
+              className="absolute inset-0 h-full w-full object-cover object-top"
+              {...fade}
+            />
+          </AnimatePresence>
+        </div>
       </div>
 
+      {/* Phone frame (device exception to the 16px radius rule) */}
+      {current.mobileImage && (
+        <div className="absolute -bottom-8 -left-2 w-[26%] min-w-[92px] overflow-hidden rounded-[1.6rem] border-[5px] border-ink-3 bg-ink-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.9)] ring-1 ring-line-strong sm:-left-6">
+          <div className="relative aspect-[390/844] overflow-hidden rounded-[1.2rem] bg-ink-2">
+            <AnimatePresence initial={false}>
+              <motion.img
+                key={current.id}
+                src={current.mobileImage}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover object-top"
+                {...fade}
+              />
+            </AnimatePresence>
+          </div>
+        </div>
+      )}
 
-
-      <div className="relative max-w-6xl mx-auto text-center z-10">
-         
-
-
-        {/* Header (H1) with split gradient display typography */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-display leading-[1.15] tracking-tight text-white max-w-4xl mx-auto"
-        >
-          אתרי פרימיום לעסקים קטנים:{" "}
-          <span className="bg-gradient-to-l from-brand-cyan via-brand-turquoise to-brand-blue bg-clip-text text-transparent block mt-1">
-            מהירות שיא, עיצוב בלתי מתפשר ונגישות מלאה
+      {/* Caption + selector, outside the image */}
+      <div className="mt-6 flex items-center justify-between gap-4 pl-[30%] sm:pl-[28%]">
+        <p className="text-sm text-fg-muted" aria-live="polite">
+          <span className="font-medium text-fg">{current.title}</span>
+          <span className="hidden sm:inline">
+            <span className="mx-2 text-fg-subtle">/</span>
+            {CATEGORY_NAMES[current.category]}
           </span>
-        </motion.h1>
+        </p>
+        <div className="flex gap-1.5" role="tablist" aria-label="בחירת פרויקט להצגה">
+          {projects.map((p, i) => (
+            <button
+              key={p.id}
+              role="tab"
+              aria-selected={i === index}
+              aria-label={p.title}
+              onClick={() => setIndex(i)}
+              className="group flex h-6 items-center"
+            >
+              <span
+                className={`block h-[3px] rounded-full transition-all duration-500 ease-out-expo ${
+                  i === index ? "w-7 bg-accent" : "w-3.5 bg-white/20 group-hover:bg-white/40"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Subtitle describing hybrid AI-architect architecture */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-6 text-lg sm:text-xl text-slate-355 max-w-3xl mx-auto leading-relaxed"
-        >
-          פיתוח היברידי מתקדם המשלב ארכיטקטורת קוד קפדנית, כלי AI פורצי דרך וניסיון אנושי עשיר. בלי פשרות ובמחיר הוגן לעסקים קטנים.
-        </motion.p>
+export default function Hero() {
+  const reduce = useReducedMotion();
+  const rise = (delay: number) => ({
+    initial: reduce ? false : { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay, ease: EASE },
+  });
 
-        {/* Call to Actions with glowing visual micro-animations */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          {/* Primary Action: Pulse Whatsapp scheduling */}
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex w-full sm:w-auto items-center justify-center gap-3 rounded-xl bg-brand-cyan text-slate-950 font-extrabold px-8 py-4 text-base shadow-[0_0_25px_rgba(34,211,238,0.35)] hover:shadow-[0_0_35px_rgba(34,211,238,0.65)] hover:scale-103 active:scale-97 transition-all duration-300 animate-[pulse_3s_infinite] cursor-pointer"
-            aria-label="תיאום שיחת התאמה בוואטסאפ (נפתח בחלון חדש)"
+  return (
+    <section
+      id="home"
+      className="relative px-4 pb-20 pt-14 sm:px-6 md:pt-20 lg:px-8 lg:pb-28"
+      aria-labelledby="hero-heading"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-0 h-[560px] w-[70%] bg-[radial-gradient(ellipse_at_top_left,rgb(76_201_220/0.10),transparent_60%)]"
+      />
+
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-6">
+          <motion.a
+            href="#about"
+            {...rise(0)}
+            className="inline-flex items-center gap-3 rounded-full border border-line py-1.5 pe-4 ps-1.5 text-sm text-fg-muted transition-colors hover:border-line-strong hover:text-fg"
           >
-            <MessageCircle className="h-5.5 w-5.5 text-slate-950 transition-transform group-hover:rotate-12" />
-            <span>תיאום שיחת התאמה (WhatsApp)</span>
-            <ArrowLeft className="h-5 w-5 mr-1 group-hover:-translate-x-1 transition-transform" />
-          </a>
+            <img src="/kobi.png" alt="" width={28} height={28} className="h-7 w-7 rounded-full object-cover" />
+            סטודיו בוטיק בהובלת קובי הרשטיק
+          </motion.a>
 
-          {/* Secondary Action: Smooth scroll to Portfolio */}
-          <a
-            href="#portfolio"
-            className="flex w-full sm:w-auto items-center justify-center rounded-xl frosted-glass-button-secondary hover:scale-102 font-bold px-8 py-4 text-base transition-all duration-200 cursor-pointer"
-            aria-label="גלול למטה לצפייה בגלריית תיק העבודות"
+          <motion.h1
+            id="hero-heading"
+            {...rise(0.08)}
+            className="mt-7 text-[2.4rem] font-semibold leading-[1.12] tracking-tight text-fg sm:text-5xl lg:text-[3.05rem] xl:text-[3.4rem]"
           >
-            לצפייה בפרויקטים
-          </a>
-        </motion.div>
+            אתרי פרימיום לעסקים קטנים.
+            <span className="block text-fg-muted">מהירים, נגישים ובנויים ביד.</span>
+          </motion.h1>
 
-        {/* Core Value Micro Bullets */}
+          <motion.p {...rise(0.16)} className="mt-6 max-w-[46ch] text-lg leading-relaxed text-fg-muted">
+            כל אתר מתוכנן, מעוצב ומפותח מאפס. קוד נקי, עמידה בתקן הנגישות ומחיר הוגן לעסק קטן.
+          </motion.p>
+
+          <motion.div {...rise(0.24)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
+              aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+            >
+              <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+              {CTA_CONTACT}
+            </a>
+            <a
+              href="#portfolio"
+              className="group inline-flex items-center justify-center gap-2 px-2 py-3 text-base font-medium text-fg transition-colors hover:text-accent"
+            >
+              {CTA_WORK}
+              <ArrowLeft size={18} className="transition-transform duration-300 ease-out-expo group-hover:-translate-x-1" aria-hidden="true" />
+            </a>
+          </motion.div>
+        </div>
+
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16 grid grid-cols-3 gap-4 max-w-3xl mx-auto border-t border-slate-900 pt-8 text-xs sm:text-sm text-slate-400"
-          id="hero-key-features"
+          className="lg:col-span-6"
+          initial={reduce ? false : { opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, delay: 0.2, ease: EASE }}
         >
-          <div className="flex flex-col items-center gap-1.5">
-            <Zap className="h-5 w-5 text-brand-cyan animate-pulse" />
-            <span className="font-bold text-slate-200">100% ביצועי מהירות</span>
-            <span>ציון 95+ ב-Google PageSpeed</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5 font-sans">
-            <ShieldCheck className="h-5 w-5 text-brand-cyan" />
-            <span className="font-bold text-slate-200">עמידה מלאה בחוק</span>
-            <span>עומד בתקן הנגישות המחמיר</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5 font-sans">
-            <Star className="h-5 w-5 text-brand-cyan" />
-            <span className="font-bold text-slate-200">עיצוב קוסטום מלא</span>
-            <span>ללא תבניות מוכנות מראש</span>
-          </div>
+          <WorkShowcase />
         </motion.div>
-
-
-
       </div>
     </section>
   );

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { 
-  Accessibility, 
-  X, 
-  ZoomIn, 
-  ZoomOut, 
-  Eye, 
-  RefreshCw, 
-  Link2, 
-  Keyboard, 
-  Type, 
-  Check 
-} from "lucide-react";
+import {
+  Wheelchair as Accessibility,
+  X,
+  MagnifyingGlassPlus as ZoomIn,
+  MagnifyingGlassMinus as ZoomOut,
+  Eye,
+  ArrowClockwise as RefreshCw,
+  Link as Link2,
+  Keyboard,
+  TextAa as Type,
+  Check,
+} from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import { AccessibilitySettings } from "../types";
 
@@ -132,17 +132,17 @@ export default function AccessibilityToolbar() {
   };
 
   return (
-    <div className="fixed bottom-6 left-6 z-[9999]" id="accessibility-root">
+    <div className="fixed bottom-5 left-5 z-[55]" id="accessibility-root">
       {/* Floating Trigger Button */}
       <button
         id="accessibility-trigger-btn"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20 transition-all hover:bg-cyan-400 hover:scale-105 active:scale-95 focus:ring-4 focus:ring-cyan-300"
+        className="flex h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink-2 text-fg shadow-lg shadow-black/40 transition-colors hover:border-accent/60 hover:text-accent active:scale-95"
         aria-label="תפריט נגישות ואפשרויות סיוע קוליות/חזותיות"
         aria-expanded={isOpen}
         aria-controls="accessibility-drawer"
       >
-        <Accessibility className="h-7 w-7" aria-hidden="true" />
+        <Accessibility className="h-6 w-6" aria-hidden="true" />
       </button>
 
       {/* Drawer Overlay & Panel */}
@@ -166,7 +166,7 @@ export default function AccessibilityToolbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="fixed inset-y-0 left-0 flex w-full max-w-sm flex-col text-white shadow-2xl border-r border-white/5 p-6 z-[10000] overflow-y-auto frosted-glass"
+              className="fixed inset-y-0 left-0 flex w-full max-w-sm flex-col text-white shadow-2xl border-r border-white/5 p-6 z-[10000] overflow-y-auto bg-ink-2"
               role="dialog"
               aria-modal="true"
               aria-label="סרגל נגישות דיגיטלי"
@@ -199,7 +199,7 @@ export default function AccessibilityToolbar() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => adjustFontSize(false)}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg frosted-glass-button-secondary text-white active:scale-95 transition-colors disabled:opacity-40"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-white active:scale-95 transition-colors disabled:opacity-40"
                       disabled={settings.fontSizeScale <= 0.9}
                       aria-label="הקטן גודל טקסט"
                     >
@@ -214,7 +214,7 @@ export default function AccessibilityToolbar() {
                     </span>
                     <button
                       onClick={() => adjustFontSize(true)}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg frosted-glass-button-secondary text-white active:scale-95 transition-colors disabled:opacity-40"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-white active:scale-95 transition-colors disabled:opacity-40"
                       disabled={settings.fontSizeScale >= 1.3}
                       aria-label="הגדל גודל טקסט"
                     >
@@ -356,11 +356,18 @@ export default function AccessibilityToolbar() {
               <div className="border-t border-slate-800 pt-4 mt-6">
                 <button
                   onClick={resetAll}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg frosted-glass-button-secondary text-white font-medium py-2.5 px-4 transition-all text-sm"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 text-white font-medium py-2.5 px-4 transition-colors hover:bg-white/10 text-sm"
                 >
                   <RefreshCw className="h-4 w-4" />
                   איפוס כל ההגדרות לברירת מחדל
                 </button>
+                <a
+                  href="#accessibility"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-3 block text-center text-sm text-cyan-300 underline-offset-4 hover:underline"
+                >
+                  להצהרת הנגישות המלאה
+                </a>
               </div>
             </motion.div>
           </>
