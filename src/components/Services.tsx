@@ -4,6 +4,7 @@ import PageHeader from "./PageHeader";
 import Reveal from "./Reveal";
 import CtaBand from "./CtaBand";
 import CaseStudy from "./CaseStudy";
+import WorkExamples from "./WorkExamples";
 
 type Service = {
   id: string;
@@ -153,6 +154,7 @@ export default function Services() {
             {websiteServices.map((s, i) => (
               <ServiceRow key={s.id} service={s} index={i} />
             ))}
+            <WorkExamples />
           </section>
 
           <section className="mt-20 md:mt-28" aria-labelledby="group-time">

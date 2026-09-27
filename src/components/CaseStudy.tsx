@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowLeft } from "@phosphor-icons/react";
 import Reveal from "./Reveal";
 import { caseStudy } from "../solutions";
 
@@ -14,6 +15,13 @@ export default function CaseStudy() {
           <p className="text-sm font-medium text-accent">מקרה אמיתי</p>
           <h3 className="mt-3 text-2xl font-semibold leading-snug tracking-tight text-fg md:text-3xl">{caseStudy.title}</h3>
           <p className="mt-2 text-fg-muted">עבור {caseStudy.client}</p>
+          <a
+            href="#case-fruit"
+            className="group mt-6 inline-flex items-center gap-2 font-medium text-accent transition-colors hover:text-accent-strong"
+          >
+            לסיפור המלא, עם צילומי מסך
+            <ArrowLeft size={18} aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-x-1" />
+          </a>
         </div>
 
         <dl className="grid gap-8 sm:grid-cols-2 lg:col-span-7">
@@ -27,6 +35,17 @@ export default function CaseStudy() {
           </div>
         </dl>
       </div>
+
+      <a href="#case-fruit" className="group block px-8 md:px-12" aria-label="לסיפור המלא של מערכת תעודות המשלוח">
+        <div className="relative h-56 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:h-80">
+          <img
+            src="/work/fruit/dashboard.jpg"
+            alt="לוח המחוונים של מערכת תעודות המשלוח (נתוני דוגמה)"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.02]"
+          />
+        </div>
+      </a>
 
       <dl className="grid border-t border-line sm:grid-cols-3">
         {caseStudy.stats.map((s, i) => (

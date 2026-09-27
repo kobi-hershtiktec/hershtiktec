@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import AccessibilityToolbar from "./components/AccessibilityToolbar";
 import AccessibilityStatement from "./components/AccessibilityStatement";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import CaseFruit from "./components/CaseFruit";
 import { EASE } from "./site";
 
 const pages: Record<string, () => React.ReactElement> = {
@@ -27,6 +28,7 @@ const pages: Record<string, () => React.ReactElement> = {
   "#contact": Contact,
   "#accessibility": AccessibilityStatement,
   "#privacy": PrivacyPolicy,
+  "#case-fruit": CaseFruit,
 };
 
 export default function App() {
