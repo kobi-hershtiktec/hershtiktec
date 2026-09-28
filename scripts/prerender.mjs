@@ -70,7 +70,17 @@ try {
       window.scrollTo(0, 0);
     });
     await new Promise((r) => setTimeout(r, 600));
-    const html = await page.evaluate(() => "<!doctype html>\n" + document.documentElement.outerHTML);
+    const html = await page.evaluate(() => {
+      // Serializing merges adjacent text nodes; React hydration expects them split.
+      // Insert the same <!-- --> separator React's server renderer emits.
+      const walker = document.createTreeWalker(document.getElementById("root"), NodeFilter.SHOW_TEXT);
+      const splits = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (n.nextSibling && n.nextSibling.nodeType === Node.TEXT_NODE) splits.push(n);
+      }
+      for (const n of splits) n.parentNode.insertBefore(document.createComment(" "), n.nextSibling);
+      return "<!doctype html>\n" + document.documentElement.outerHTML;
+    });
     const h1 = await page.evaluate(() => document.querySelector("h1")?.textContent?.trim() || "");
     if (!h1) throw new Error(`prerender: no <h1> rendered for ${route.path}`);
     rendered.push({ route, html });
@@ -82,7 +92,15 @@ try {
   server.close();
 }
 
-for (const { route, html } of rendered) {
+// Inline the stylesheet so first paint doesn't wait on a second render-blocking request.
+const inlineCss = (html) =>
+  html.replace(/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/, (tag, href) => {
+    const css = fs.readFileSync(path.join(dist, href), "utf8");
+    return `<style>${css}</style>`;
+  });
+
+for (const { route, html: raw } of rendered) {
+  const html = inlineCss(raw);
   const out =
     route.key === "notFound"
       ? path.join(dist, "404.html")

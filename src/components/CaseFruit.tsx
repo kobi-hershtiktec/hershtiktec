@@ -4,17 +4,18 @@ import PageHeader from "./PageHeader";
 import Reveal from "./Reveal";
 import CtaBand from "./CtaBand";
 import { caseStudy } from "../solutions";
+import { ImgName, responsive } from "../img";
 
 // Full case study: delivery-certificate + invoice-analysis system.
 // Screenshots were taken from a local copy of the app running on fictional demo data.
 
-function Shot({ src, alt, host = "fruit-certificates.app", className = "" }: { src: string; alt: string; host?: string; className?: string }) {
+function Shot({ img, sizes, alt, priority = false, host = "fruit-certificates.app", className = "" }: { img: ImgName; sizes: string; alt: string; priority?: boolean; host?: string; className?: string }) {
   return (
     <figure className={`overflow-hidden rounded-2xl border border-line-strong bg-ink-2 shadow-[0_40px_120px_-50px_rgb(0_0_0/0.9)] ${className}`}>
       <div className="flex h-8 items-center justify-center border-b border-line bg-ink-3/80">
         <span className="font-mono text-[11px] text-fg-subtle" dir="ltr">{host}</span>
       </div>
-      <img src={src} alt={alt} loading="lazy" className="block w-full" />
+      <img {...responsive(img, sizes)} width={2560} height={1720} alt={alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} className="block h-auto w-full" />
     </figure>
   );
 }
@@ -52,7 +53,7 @@ export default function CaseFruit() {
             intro={`מערכת שבנינו עבור ${caseStudy.client}, שהחליפה שעות של בדיקה ידנית בכמה שניות של העלאת קובץ.`}
           />
           <Reveal delay={0.1} className="mt-14">
-            <Shot src="/work/fruit/dashboard.jpg" alt="לוח המחוונים של המערכת: סיכומים, משלוחים שמחכים לחשבונית וסיכום לפי לקוח" />
+            <Shot priority img="fruit-dashboard" sizes="(min-width: 1280px) 1216px, 100vw" alt="לוח המחוונים של המערכת: סיכומים, משלוחים שמחכים לחשבונית וסיכום לפי לקוח" />
             <p className="mt-3 text-sm text-fg-subtle">הצילומים מציגים נתוני דוגמה. שמות הלקוחות והסכומים אינם אמיתיים.</p>
           </Reveal>
         </div>
@@ -88,7 +89,7 @@ export default function CaseFruit() {
             </ul>
           </Reveal>
           <Reveal delay={0.08} className="lg:col-span-7">
-            <Shot src="/work/fruit/certificate.jpg" alt="טופס תעודת משלוח: לקוח, פרי, גודל ומספר קרטונים, עם חישוב אוטומטי של מספר הפירות" />
+            <Shot img="fruit-certificate" sizes="(min-width: 1024px) 56vw, 100vw" alt="טופס תעודת משלוח: לקוח, פרי, גודל ומספר קרטונים, עם חישוב אוטומטי של מספר הפירות" />
           </Reveal>
         </div>
       </section>
@@ -108,7 +109,7 @@ export default function CaseFruit() {
             </ul>
           </Reveal>
           <Reveal delay={0.08} className="mt-10">
-            <Shot src="/work/fruit/invoice.jpg" alt="מסך ניתוח חשבונית: הצלבה מול סכום החשבונית, שורה שדורשת אישור, וטבלת השורות שעודכנו" />
+            <Shot img="fruit-invoice" sizes="(min-width: 1280px) 1120px, 100vw" alt="מסך ניתוח חשבונית: הצלבה מול סכום החשבונית, שורה שדורשת אישור, וטבלת השורות שעודכנו" />
           </Reveal>
         </div>
       </section>
@@ -128,7 +129,9 @@ export default function CaseFruit() {
           <Reveal delay={0.08} className="md:col-span-5">
             <div className="mx-auto w-[62%] max-w-[260px] overflow-hidden rounded-[1.9rem] border-[6px] border-ink-3 bg-ink-3 shadow-[0_40px_100px_-30px_rgb(0_0_0/0.9)] ring-1 ring-line-strong">
               <img
-                src="/work/fruit/dashboard-mobile.jpg"
+                {...responsive("fruit-dashboard-mobile", "260px")}
+                width={780}
+                height={1688}
                 alt="לוח המחוונים בנייד"
                 loading="lazy"
                 className="block w-full rounded-[1.4rem]"

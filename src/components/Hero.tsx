@@ -5,6 +5,7 @@ import projectsData from "../projects.json";
 import { Project } from "../types";
 import { CATEGORY_NAMES, CTA_CONTACT, CTA_WORK, EASE, WHATSAPP_URL } from "../site";
 import { introAllowed } from "../intro";
+import { imgUrl, responsive } from "../img";
 
 const projects = projectsData as Project[];
 const CYCLE_MS = 5500;
@@ -43,7 +44,10 @@ function WorkShowcase() {
           <AnimatePresence initial={false}>
             <motion.img
               key={current.id}
-              src={current.image}
+              {...responsive(current.img, "(min-width: 1280px) 610px, (min-width: 1024px) 48vw, 100vw")}
+              width={1440}
+              height={900}
+              fetchPriority={index === 0 ? "high" : "auto"}
               alt={`צילום מסך של האתר ${current.title}`}
               className="absolute inset-0 h-full w-full object-cover object-top"
               {...fade}
@@ -53,13 +57,15 @@ function WorkShowcase() {
       </div>
 
       {/* Phone frame (device exception to the 16px radius rule) */}
-      {current.mobileImage && (
+      {current.mobileImg && (
         <div className="absolute -bottom-8 -left-2 w-[26%] min-w-[92px] overflow-hidden rounded-[1.6rem] border-[5px] border-ink-3 bg-ink-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.9)] ring-1 ring-line-strong sm:-left-6">
           <div className="relative aspect-[390/844] overflow-hidden rounded-[1.2rem] bg-ink-2">
             <AnimatePresence initial={false}>
               <motion.img
                 key={current.id}
-                src={current.mobileImage}
+                {...responsive(current.mobileImg, "(min-width: 1024px) 160px, 26vw")}
+                width={390}
+                height={844}
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover object-top"
                 {...fade}
@@ -86,7 +92,7 @@ function WorkShowcase() {
               aria-selected={i === index}
               aria-label={p.title}
               onClick={() => setIndex(i)}
-              className="group flex h-6 items-center"
+              className="group flex h-11 min-w-8 items-center justify-center"
             >
               <span
                 className={`block h-[3px] rounded-full transition-all duration-500 ease-out-expo ${
@@ -127,7 +133,7 @@ export default function Hero() {
             {...rise(0)}
             className="inline-flex items-center gap-3 rounded-full border border-line py-1.5 pe-4 ps-1.5 text-sm text-fg-muted transition-colors hover:border-line-strong hover:text-fg"
           >
-            <img src="/kobi.png" alt="" width={28} height={28} className="h-7 w-7 rounded-full object-cover" />
+            <img src={imgUrl("kobi", 96)} alt="" width={28} height={28} className="h-7 w-7 rounded-full object-cover" />
             סטודיו בוטיק בהובלת קובי הרשטיק
           </motion.a>
 

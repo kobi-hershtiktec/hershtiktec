@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowLeft } from "@phosphor-icons/react";
 import Reveal from "./Reveal";
 import { caseStudy } from "../solutions";
+import { responsive } from "../img";
 
 // Real delivered system, anonymized. Numbers come from the project's own verification runs.
 export default function CaseStudy() {
@@ -39,7 +40,9 @@ export default function CaseStudy() {
       <a href="/case-studies/fruit-delivery-system/" className="group block px-8 md:px-12" aria-label="לסיפור המלא של מערכת תעודות המשלוח">
         <div className="relative h-56 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:h-80">
           <img
-            src="/work/fruit/dashboard.jpg"
+            {...responsive("fruit-dashboard", "(min-width: 1280px) 1120px, 92vw")}
+            width={2560}
+            height={1720}
             alt="לוח המחוונים של מערכת תעודות המשלוח (נתוני דוגמה)"
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.02]"

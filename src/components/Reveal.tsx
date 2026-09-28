@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "../site";
+import { introAllowed } from "../intro";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ export default function Reveal({ children, delay = 0, className, as = "div" }: R
   return (
     <Tag
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 24 }}
+      initial={reduce || !introAllowed() ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, delay, ease: EASE }}

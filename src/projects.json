@@ -4,29 +4,41 @@
     "title": "Hershtik Capital",
     "description": "אתר תדמית לחברת השקעות נדל\"ן בארה\"ב. שפה עיצובית שמרנית ויוקרתית, מבנה שמוביל משקיעים ומוכרים ישר לפנייה.",
     "category": "corporate",
-    "image": "/work/hershtik-capital.jpg",
-    "mobileImage": "/work/hershtik-capital-mobile.jpg",
     "link": "https://www.hershtikcapital.com/",
-    "technologies": ["React", "Tailwind CSS", "Motion"]
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "img": "hershtik-capital",
+    "mobileImg": "hershtik-capital-mobile"
   },
   {
     "id": "aura-luxury",
     "title": "AURA",
     "description": "חנות אונליין למותג אופנה וטיפוח. תהליך רכישה קצר, טעינה מהירה בנייד ואווירה של בוטיק.",
     "category": "e-commerce",
-    "image": "/work/aura.jpg",
-    "mobileImage": "/work/aura-mobile.jpg",
     "link": "https://kobi-hershtiktec.github.io/Aura/",
-    "technologies": ["HTML", "CSS", "JavaScript"]
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "img": "aura",
+    "mobileImg": "aura-mobile"
   },
   {
     "id": "by-renovations",
     "title": "י.ב שיפוצים",
     "description": "אתר תדמית לצוות שיפוצים. גלריית לפני ואחרי, הצעת מחיר בלחיצה וחיוג ישיר מהנייד.",
     "category": "corporate",
-    "image": "/work/by-renovations.jpg",
-    "mobileImage": "/work/by-renovations-mobile.jpg",
     "link": "https://kobi-hershtiktec.github.io/B.Y-renovations/",
-    "technologies": ["HTML", "CSS", "JavaScript"]
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "img": "by-renovations",
+    "mobileImg": "by-renovations-mobile"
   }
 ]

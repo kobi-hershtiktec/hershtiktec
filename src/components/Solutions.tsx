@@ -25,7 +25,7 @@ export default function Solutions() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line-strong px-6 py-3 text-base font-medium text-fg transition-colors duration-200 hover:border-accent/60 hover:text-accent"
-                aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+                aria-label={`${CTA_CONTACT} על אוטומציה לעסק (נפתח בחלון חדש)`}
               >
                 <WhatsappLogo size={20} aria-hidden="true" />
                 {CTA_CONTACT}

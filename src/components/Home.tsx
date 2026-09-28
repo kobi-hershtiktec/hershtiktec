@@ -8,6 +8,7 @@ import Reveal from "./Reveal";
 import projectsData from "../projects.json";
 import { Project } from "../types";
 import { CATEGORY_NAMES } from "../site";
+import { responsive } from "../img";
 
 const projects = projectsData as Project[];
 
@@ -55,7 +56,9 @@ function WorkTile({ project, large = false }: { project: Project; large?: boolea
         }`}
       >
         <img
-          src={project.image}
+          {...responsive(project.img, large ? "(min-width: 768px) 56vw, 100vw" : "(min-width: 768px) 38vw, 100vw")}
+          width={1440}
+          height={900}
           alt=""
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"

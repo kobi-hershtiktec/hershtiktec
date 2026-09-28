@@ -2,6 +2,7 @@ import React from "react";
 import PageHeader from "./PageHeader";
 import Reveal from "./Reveal";
 import CtaBand from "./CtaBand";
+import { responsive } from "../img";
 
 const values = [
   {
@@ -78,7 +79,7 @@ export default function About() {
                   className="absolute inset-[-12%] rounded-full bg-[radial-gradient(closest-side,rgb(76_201_220/0.14),transparent)]"
                 />
                 <img
-                  src="/kobi.png"
+                  {...responsive("kobi", "(min-width: 1024px) 384px, 90vw")}
                   alt="קובי הרשטיק, מייסד HERSHTIKTEC"
                   className="relative h-full w-full rounded-full object-cover ring-1 ring-line-strong"
                   width={953}

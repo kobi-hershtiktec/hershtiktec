@@ -1,14 +1,15 @@
 import React from "react";
 import { ArrowUpLeft } from "@phosphor-icons/react";
 import Reveal from "./Reveal";
+import { ImgName, responsive } from "../img";
 
 // Real shipped sites and live interactive demos, shown under the websites track.
 const examples = [
-  { title: "Hershtik Capital", kind: "אתר תדמית", image: "/work/hershtik-capital.jpg", link: "https://www.hershtikcapital.com/" },
-  { title: "חוויית גלילה בסגנון אפל", kind: "דמו אינטראקטיבי", image: "/work/scroll-demo.jpg", link: "https://kobi-hershtiktec.github.io/scroll-demo/" },
-  { title: "AURA", kind: "חנות אונליין", image: "/work/aura.jpg", link: "https://kobi-hershtiktec.github.io/Aura/" },
-  { title: "חשיפת מוצר בתלת-ממד", kind: "דמו אינטראקטיבי", image: "/work/camera-reveal.jpg", link: "https://kobi-hershtiktec.github.io/camera-reveal/" },
-  { title: "י.ב שיפוצים", kind: "אתר תדמית", image: "/work/by-renovations.jpg", link: "https://kobi-hershtiktec.github.io/B.Y-renovations/" },
+  { title: "Hershtik Capital", kind: "אתר תדמית", img: "hershtik-capital" as ImgName, link: "https://www.hershtikcapital.com/" },
+  { title: "חוויית גלילה בסגנון אפל", kind: "דמו אינטראקטיבי", img: "scroll-demo" as ImgName, link: "https://kobi-hershtiktec.github.io/scroll-demo/" },
+  { title: "AURA", kind: "חנות אונליין", img: "aura" as ImgName, link: "https://kobi-hershtiktec.github.io/Aura/" },
+  { title: "חשיפת מוצר בתלת-ממד", kind: "דמו אינטראקטיבי", img: "camera-reveal" as ImgName, link: "https://kobi-hershtiktec.github.io/camera-reveal/" },
+  { title: "י.ב שיפוצים", kind: "אתר תדמית", img: "by-renovations" as ImgName, link: "https://kobi-hershtiktec.github.io/B.Y-renovations/" },
 ];
 
 export default function WorkExamples() {
@@ -30,7 +31,9 @@ export default function WorkExamples() {
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-ink-2">
                 <img
-                  src={ex.image}
+                  {...responsive(ex.img, i < 2 ? "(min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw")}
+                  width={1440}
+                  height={900}
                   alt=""
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"

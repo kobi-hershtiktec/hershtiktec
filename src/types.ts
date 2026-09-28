@@ -1,10 +1,13 @@
+import type { ImgName } from "./img";
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   category: string;
-  image: string;
-  mobileImage?: string;
+  /** Responsive image name, see src/img.ts */
+  img: ImgName;
+  mobileImg?: ImgName;
   link: string;
   technologies: string[];
 }

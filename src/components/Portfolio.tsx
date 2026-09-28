@@ -6,6 +6,7 @@ import CtaBand from "./CtaBand";
 import { Project } from "../types";
 import projectsData from "../projects.json";
 import { CATEGORY_NAMES, EASE } from "../site";
+import { responsive } from "../img";
 
 const categories = [
   { id: "all", name: "הכל" },
@@ -82,7 +83,9 @@ export default function Portfolio() {
                         }`}
                       >
                         <img
-                          src={project.image}
+                          {...responsive(project.img, featured ? "(min-width: 1280px) 1216px, 100vw" : "(min-width: 768px) 50vw, 100vw")}
+                          width={1440}
+                          height={900}
                           alt={`צילום מסך של האתר ${project.title}`}
                           loading={featured ? "eager" : "lazy"}
                           className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
