@@ -65,7 +65,7 @@ export default function Navbar({ activePath }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-line-strong px-4.5 py-2 text-sm font-medium text-fg transition-colors duration-200 hover:border-accent/60 hover:text-accent"
-            aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+            aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
           >
             <WhatsappLogo size={18} aria-hidden="true" />
             {CTA_CONTACT_SHORT}
@@ -111,7 +111,7 @@ export default function Navbar({ activePath }: NavbarProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent py-3.5 font-semibold text-on-accent"
-                aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+                aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
               >
                 <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
                 {CTA_CONTACT}

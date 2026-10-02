@@ -3,6 +3,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 import PageHeader from "./PageHeader";
 import Reveal from "./Reveal";
 import CtaBand from "./CtaBand";
+import PhoneFrame from "./PhoneFrame";
 import { caseStudy } from "../solutions";
 import { ImgName, responsive } from "../img";
 
@@ -127,16 +128,16 @@ export default function CaseFruit() {
             </ul>
           </Reveal>
           <Reveal delay={0.08} className="md:col-span-5">
-            <div className="mx-auto w-[62%] max-w-[260px] overflow-hidden rounded-[1.9rem] border-[6px] border-ink-3 bg-ink-3 shadow-[0_40px_100px_-30px_rgb(0_0_0/0.9)] ring-1 ring-line-strong">
+            <PhoneFrame className="mx-auto w-[62%] max-w-[270px]">
               <img
                 {...responsive("fruit-dashboard-mobile", "260px")}
                 width={780}
                 height={1688}
                 alt="לוח המחוונים בנייד"
                 loading="lazy"
-                className="block w-full rounded-[1.4rem]"
+                className="absolute inset-0 h-full w-full object-cover object-top pt-[9%]"
               />
-            </div>
+            </PhoneFrame>
           </Reveal>
         </div>
       </section>

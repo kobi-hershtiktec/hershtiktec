@@ -24,7 +24,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
-              aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+              aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
             >
               <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
               {CTA_CONTACT}

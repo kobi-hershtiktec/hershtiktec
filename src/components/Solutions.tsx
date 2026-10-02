@@ -1,14 +1,15 @@
 import React from "react";
 import { ArrowLeft, WhatsappLogo } from "@phosphor-icons/react";
 import Reveal from "./Reveal";
+import { solutionIcons } from "./solutionIcons";
 import CaseStudy from "./CaseStudy";
 import { solutionExamples, solutionsWhatsappText } from "../solutions";
-import { CTA_CONTACT, whatsappWith } from "../site";
+import { CTA_AUTOMATION, whatsappWith } from "../site";
 
 // Home-page entry to the second track: automations and custom tools.
 export default function Solutions() {
   return (
-    <section className="px-4 pb-24 sm:px-6 md:pb-32 lg:px-8" aria-labelledby="solutions-heading">
+    <section className="px-4 pb-24 sm:px-6 md:pb-20 lg:px-8" aria-labelledby="solutions-heading">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
@@ -25,10 +26,10 @@ export default function Solutions() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line-strong px-6 py-3 text-base font-medium text-fg transition-colors duration-200 hover:border-accent/60 hover:text-accent"
-                aria-label={`${CTA_CONTACT} על אוטומציה לעסק (נפתח בחלון חדש)`}
+                aria-label={`${CTA_AUTOMATION}: שיחה על אוטומציה לעסק בוואטסאפ (נפתח בחלון חדש)`}
               >
                 <WhatsappLogo size={20} aria-hidden="true" />
-                {CTA_CONTACT}
+                {CTA_AUTOMATION}
               </a>
               <a
                 href="/automations/"
@@ -43,6 +44,10 @@ export default function Solutions() {
           <ul className="grid gap-x-10 sm:grid-cols-2 lg:col-span-7">
             {solutionExamples.map((ex, i) => (
               <Reveal as="li" key={ex.pain} delay={i * 0.06} className="border-t border-line py-7">
+                {(() => {
+                  const Icon = solutionIcons[i];
+                  return <Icon size={26} weight="duotone" className="mb-4 text-accent" aria-hidden="true" />;
+                })()}
                 <p className="text-lg font-medium text-fg">{ex.pain}</p>
                 <p className="mt-2 leading-relaxed text-fg-muted">{ex.result}</p>
               </Reveal>
@@ -50,8 +55,8 @@ export default function Solutions() {
           </ul>
         </div>
 
-        <div className="mt-16">
-          <CaseStudy />
+        <div className="mt-12">
+          <CaseStudy compact />
         </div>
       </div>
     </section>

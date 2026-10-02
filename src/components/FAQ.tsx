@@ -3,7 +3,7 @@ import { Plus, WhatsappLogo } from "@phosphor-icons/react";
 import { useReducedMotion } from "motion/react";
 import { faqs } from "../faqs";
 import PageHeader from "./PageHeader";
-import { CTA_CONTACT, WHATSAPP_URL } from "../site";
+import { WHATSAPP_URL } from "../site";
 
 export default function FAQ() {
   const [openId, setOpenId] = useState<string | null>(faqs[0].id);
@@ -24,10 +24,10 @@ export default function FAQ() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 text-base font-medium text-accent transition-colors hover:text-accent-strong"
-                aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+                aria-label="שאלו אותי בוואטסאפ (נפתח בחלון חדש)"
               >
                 <WhatsappLogo size={20} aria-hidden="true" />
-                {CTA_CONTACT}
+                שאלו אותי בוואטסאפ
               </a>
             </PageHeader>
           </div>

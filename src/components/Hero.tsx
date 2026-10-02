@@ -6,6 +6,7 @@ import { Project } from "../types";
 import { CATEGORY_NAMES, CTA_CONTACT, CTA_WORK, EASE, WHATSAPP_URL } from "../site";
 import { introAllowed } from "../intro";
 import { imgUrl, responsive } from "../img";
+import PhoneFrame from "./PhoneFrame";
 
 const projects = projectsData as Project[];
 const CYCLE_MS = 5500;
@@ -56,23 +57,21 @@ function WorkShowcase() {
         </div>
       </div>
 
-      {/* Phone frame (device exception to the 16px radius rule) */}
+      {/* Phone mockup (device exception to the 16px radius rule) */}
       {current.mobileImg && (
-        <div className="absolute -bottom-8 -left-2 w-[26%] min-w-[92px] overflow-hidden rounded-[1.6rem] border-[5px] border-ink-3 bg-ink-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.9)] ring-1 ring-line-strong sm:-left-6">
-          <div className="relative aspect-[390/844] overflow-hidden rounded-[1.2rem] bg-ink-2">
-            <AnimatePresence initial={false}>
-              <motion.img
-                key={current.id}
-                {...responsive(current.mobileImg, "(min-width: 1024px) 160px, 26vw")}
-                width={390}
-                height={844}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover object-top"
-                {...fade}
-              />
-            </AnimatePresence>
-          </div>
-        </div>
+        <PhoneFrame className="absolute -bottom-10 -left-2 w-[27%] min-w-[96px] sm:-left-6">
+          <AnimatePresence initial={false}>
+            <motion.img
+              key={current.id}
+              {...responsive(current.mobileImg, "(min-width: 1024px) 160px, 26vw")}
+              width={390}
+              height={844}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover object-top pt-[9%]"
+              {...fade}
+            />
+          </AnimatePresence>
+        </PhoneFrame>
       )}
 
       {/* Caption + selector, outside the image */}
@@ -143,7 +142,7 @@ export default function Hero() {
             className="mt-7 text-[2.4rem] font-semibold leading-[1.12] tracking-tight text-fg sm:text-5xl lg:text-[3.05rem] xl:text-[3.4rem]"
           >
             אתרי פרימיום לעסקים קטנים.
-            <span className="block text-fg-muted">מהירים, נגישים ובנויים ביד.</span>
+            <span className="block text-fg-muted">מהירים, נגישים ונבנים ידנית.</span>
           </motion.h1>
 
           <motion.p {...rise(0.16)} className="mt-6 max-w-[46ch] text-lg leading-relaxed text-fg-muted">
@@ -156,7 +155,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
-              aria-label={`${CTA_CONTACT} (נפתח בחלון חדש)`}
+              aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
             >
               <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
               {CTA_CONTACT}

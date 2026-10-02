@@ -35,7 +35,7 @@ const reasons = [
   },
   {
     title: "נגישות לפי החוק",
-    body: "התאמה לתקנות שוויון זכויות לאנשים עם מוגבלות (ת״י 5568).",
+    body: "התאמה לתקנות שוויון זכויות לאנשים עם מוגבלות (תקן ישראלי 5568).",
     tone: "plain",
   },
   {
@@ -56,7 +56,7 @@ export default function About() {
               <p>
                 מאחורי <strong className="font-semibold text-fg">HERSHTIKTEC</strong> עומד קובי הרשטיק: ארכיטקט
                 פתרונות דיגיטליים, מפתח, ו<strong className="font-semibold text-fg">מילואימניק פעיל</strong> בחטיבה
-                לוחמת. את הרעות, המקצועיות וההתגייסות למשימה אנחנו מביאים ישר לתוך הקוד של האתר שלכם.
+                לוחמת. את המקצועיות, הדיוק וההתגייסות למשימה אנחנו מביאים ישר לתוך הקוד של האתר שלכם.
               </p>
               <p>
                 קוד טוב הוא עבודה של בני אדם. בזמן שרבים מדביקים פתרונות AI גנריים, אנחנו משקיעים בתכנון, בארכיטקטורה
@@ -65,7 +65,7 @@ export default function About() {
             </Reveal>
             <Reveal delay={0.1} as="div" className="mt-10 border-r-2 border-accent pr-6">
               <blockquote className="text-xl leading-relaxed text-fg md:text-2xl">
-                ה-AI הוא כלי שמאיץ את העבודה. התכנון, העיצוב, הנגישות והמילים נשארים אנושיים.
+                ה-AI עוזר לנו לעבוד מהר. התכנון, העיצוב והכתיבה נעשים אצלנו, בידי אדם.
               </blockquote>
               <p className="mt-3 text-sm text-fg-muted">קובי הרשטיק, מייסד</p>
             </Reveal>

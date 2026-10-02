@@ -9,8 +9,9 @@ export const WHATSAPP_URL =
 
 export const whatsappWith = (text: string) => "https://wa.me/972505712342?text=" + encodeURIComponent(text);
 
-export const CTA_CONTACT ="שיחת היכרות בוואטסאפ";
-export const CTA_CONTACT_SHORT = "שיחת היכרות";
+export const CTA_CONTACT = "בואו נתחיל לבנות את האתר שלכם";
+export const CTA_CONTACT_SHORT = "בואו נתחיל";
+export const CTA_AUTOMATION = "בואו נפתור את זה";
 export const CTA_WORK = "לתיק העבודות";
 
 export const CATEGORY_NAMES: Record<string, string> = {

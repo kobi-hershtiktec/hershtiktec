@@ -5,6 +5,7 @@ import CtaBand from "./CtaBand";
 import Process from "./Process";
 import Solutions from "./Solutions";
 import Reveal from "./Reveal";
+import CountUp from "./CountUp";
 import projectsData from "../projects.json";
 import { Project } from "../types";
 import { CATEGORY_NAMES } from "../site";
@@ -13,7 +14,7 @@ import { responsive } from "../img";
 const projects = projectsData as Project[];
 
 const proofPoints = [
-  { value: "ת״י 5568", label: "נגישות ברמת AA, מובנית מהיום הראשון" },
+  { value: "נגיש", label: "לפי החוק ותקן ישראלי 5568, מהיום הראשון" },
   { value: "95+", label: "ציון Google PageSpeed בנייד" },
   { value: "0", label: "תבניות. כל אתר נכתב מאפס" },
 ];
@@ -29,10 +30,11 @@ function ProofStrip() {
               i > 0 ? "border-t border-line sm:border-t-0 sm:border-r sm:ps-8" : ""
             }`}
           >
-            <span className="shrink-0 text-2xl font-semibold tabular-nums text-fg md:text-4xl"
-              dir={/^[0-9]/.test(p.value) ? "ltr" : undefined}>
-              {p.value}
-            </span>
+            <CountUp
+              value={p.value}
+              className="shrink-0 text-2xl font-semibold tabular-nums text-fg md:text-4xl"
+              dir={/^[0-9]/.test(p.value) ? "ltr" : undefined}
+            />
             <span className="text-sm leading-relaxed text-fg-muted md:text-base">{p.label}</span>
           </div>
         ))}
@@ -52,7 +54,7 @@ function WorkTile({ project, large = false }: { project: Project; large?: boolea
     >
       <div
         className={`relative overflow-hidden rounded-2xl border border-line bg-ink-2 ${
-          large ? "aspect-[4/3] md:aspect-auto md:flex-1" : "aspect-[16/10]"
+          large ? "aspect-[4/3] md:aspect-auto md:min-h-0 md:flex-1" : "aspect-[16/10] md:aspect-auto md:min-h-0 md:flex-1"
         }`}
       >
         <img
@@ -82,7 +84,7 @@ function WorkTile({ project, large = false }: { project: Project; large?: boolea
 function SelectedWork() {
   const [first, ...rest] = projects;
   return (
-    <section className="px-4 py-24 sm:px-6 md:py-32 lg:px-8" aria-labelledby="selected-work-heading">
+    <section className="px-4 py-24 sm:px-6 md:py-16 lg:px-8" aria-labelledby="selected-work-heading">
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-12 flex items-end justify-between gap-6">
           <h2 id="selected-work-heading" className="text-3xl font-semibold tracking-tight text-fg md:text-4xl">
@@ -97,13 +99,14 @@ function SelectedWork() {
           </a>
         </Reveal>
 
-        <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-          <Reveal className="md:col-span-7">
+        {/* On desktop the whole grid fits one screen height */}
+        <div className="grid gap-10 md:h-[min(600px,calc(100dvh-16rem))] md:grid-cols-12 md:gap-8">
+          <Reveal className="md:col-span-7 md:min-h-0">
             <WorkTile project={first} large />
           </Reveal>
-          <div className="grid gap-10 md:col-span-5 md:gap-8">
+          <div className="grid gap-10 md:col-span-5 md:min-h-0 md:grid-rows-2 md:gap-8">
             {rest.map((p, i) => (
-              <Reveal key={p.id} delay={0.08 * (i + 1)}>
+              <Reveal key={p.id} delay={0.08 * (i + 1)} className="md:min-h-0">
                 <WorkTile project={p} />
               </Reveal>
             ))}

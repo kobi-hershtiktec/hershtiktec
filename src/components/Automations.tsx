@@ -2,11 +2,12 @@ import React from "react";
 import { WhatsappLogo } from "@phosphor-icons/react";
 import PageHeader from "./PageHeader";
 import Reveal from "./Reveal";
+import { solutionIcons } from "./solutionIcons";
 import CaseStudy from "./CaseStudy";
 import CtaBand from "./CtaBand";
 import { ServiceRow, timeServices } from "./Services";
 import { solutionExamples, solutionsWhatsappText } from "../solutions";
-import { CTA_CONTACT, whatsappWith } from "../site";
+import { CTA_AUTOMATION, whatsappWith } from "../site";
 
 const steps = [
   { title: "מספרים מה גוזל זמן", body: "שיחה קצרה על העבודה הידנית שחוזרת על עצמה בעסק. לא צריך לדעת מה הפתרון, רק מה מעצבן." },
@@ -45,10 +46,10 @@ export default function Automations() {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
-              aria-label={`${CTA_CONTACT} על אוטומציה לעסק (נפתח בחלון חדש)`}
+              aria-label={`${CTA_AUTOMATION}: שיחה על אוטומציה לעסק בוואטסאפ (נפתח בחלון חדש)`}
             >
               <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
-              {CTA_CONTACT}
+              {CTA_AUTOMATION}
             </a>
           </PageHeader>
 
@@ -61,7 +62,11 @@ export default function Automations() {
             <ul className="mt-10 grid gap-x-10 sm:grid-cols-2">
               {solutionExamples.map((ex, i) => (
                 <Reveal as="li" key={ex.pain} delay={(i % 2) * 0.06} className="border-t border-line py-8">
-                  <p className="text-xl font-medium text-fg">{ex.pain}</p>
+                  {(() => {
+                  const Icon = solutionIcons[i];
+                  return <Icon size={26} weight="duotone" className="mb-4 text-accent" aria-hidden="true" />;
+                })()}
+                <p className="text-xl font-medium text-fg">{ex.pain}</p>
                   <p className="mt-2 text-lg leading-relaxed text-fg-muted">{ex.result}</p>
                 </Reveal>
               ))}
