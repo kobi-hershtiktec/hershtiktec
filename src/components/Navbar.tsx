@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { List, X, WhatsappLogo } from "@phosphor-icons/react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 import { CTA_CONTACT, CTA_CONTACT_SHORT, EASE, WHATSAPP_URL } from "../site";
 
 interface NavbarProps {
@@ -49,7 +50,7 @@ export default function Navbar({ activePath }: NavbarProps) {
                 {active && (
                   <motion.span
                     layoutId={reduce ? undefined : "nav-active"}
-                    className="absolute inset-0 -z-10 rounded-full bg-white/[0.06]"
+                    className="absolute inset-0 -z-10 rounded-full bg-fg/[0.06]"
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
@@ -59,7 +60,8 @@ export default function Navbar({ activePath }: NavbarProps) {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle />
           <a
             href={WHATSAPP_URL}
             target="_blank"
@@ -72,15 +74,18 @@ export default function Navbar({ activePath }: NavbarProps) {
           </a>
         </div>
 
+        <div className="flex items-center gap-1 lg:hidden">
+        <ThemeToggle />
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-white/5 hover:text-fg lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-fg/5 hover:text-fg"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? "סגור תפריט ניווט" : "פתח תפריט ניווט"}
         >
           {isOpen ? <X size={22} /> : <List size={22} />}
         </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -100,7 +105,7 @@ export default function Navbar({ activePath }: NavbarProps) {
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
                   className={`rounded-xl px-4 py-3.5 text-lg ${
-                    isActive(link.href) ? "bg-white/[0.05] text-fg" : "text-fg-muted"
+                    isActive(link.href) ? "bg-fg/[0.05] text-fg" : "text-fg-muted"
                   }`}
                 >
                   {link.name}
@@ -113,7 +118,7 @@ export default function Navbar({ activePath }: NavbarProps) {
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent py-3.5 font-semibold text-on-accent"
                 aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
               >
-                <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+                <WhatsappLogo size={24} weight="bold" aria-hidden="true" className="shrink-0" />
                 {CTA_CONTACT}
               </a>
             </nav>

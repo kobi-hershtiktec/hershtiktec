@@ -76,7 +76,7 @@ export default function About() {
               <div className="relative aspect-square">
                 <div
                   aria-hidden="true"
-                  className="absolute inset-[-12%] rounded-full bg-[radial-gradient(closest-side,rgb(76_201_220/0.14),transparent)]"
+                  className="absolute inset-[-12%] rounded-full max-sm:inset-[-4%] bg-[radial-gradient(closest-side,rgb(76_201_220/0.14),transparent)]"
                 />
                 <img
                   {...responsive("kobi", "(min-width: 1024px) 384px, 90vw")}

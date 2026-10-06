@@ -59,7 +59,10 @@ try {
   for (const route of routes) {
     const page = await browser.newPage();
     await page.setViewport({ width: 1440, height: 900 });
-    await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    await page.emulateMediaFeatures([
+      { name: "prefers-reduced-motion", value: "reduce" },
+      { name: "prefers-color-scheme", value: "dark" },
+    ]);
     await page.goto(base + route.path, { waitUntil: "networkidle0", timeout: 60000 });
     // Scroll through so every in-view reveal settles into its final state.
     await page.evaluate(async () => {

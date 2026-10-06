@@ -25,10 +25,10 @@ export default function Solutions() {
                 href={whatsappWith(solutionsWhatsappText)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line-strong px-6 py-3 text-base font-medium text-fg transition-colors duration-200 hover:border-accent/60 hover:text-accent"
+                className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
                 aria-label={`${CTA_AUTOMATION}: שיחה על אוטומציה לעסק בוואטסאפ (נפתח בחלון חדש)`}
               >
-                <WhatsappLogo size={20} aria-hidden="true" />
+                <WhatsappLogo size={24} weight="bold" aria-hidden="true" />
                 {CTA_AUTOMATION}
               </a>
               <a

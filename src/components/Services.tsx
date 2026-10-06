@@ -12,7 +12,6 @@ type Service = {
   title: string;
   description: string;
   features: string[];
-  stack: string;
 };
 
 const websiteServices: Service[] = [
@@ -28,7 +27,6 @@ const websiteServices: Service[] = [
       "חיבור לאנליטיקס ולפיקסלים למדידת תוצאות",
       "דפי נחיתה קלים ומהירים לקמפיינים ממומנים",
     ],
-    stack: "React / Vite / Tailwind CSS / Motion",
   },
   {
     id: "ai-hybrid-dev",
@@ -42,7 +40,6 @@ const websiteServices: Service[] = [
       "פתרונות מותאמים לתהליכים של העסק",
       "החיסכון בזמן עובר אליכם במחיר",
     ],
-    stack: "TypeScript / Node.js / Gemini / REST APIs",
   },
   {
     id: "accessibility-perf",
@@ -56,7 +53,6 @@ const websiteServices: Service[] = [
       "עמידה בחוק הנגישות ומניעת חשיפה לתביעות",
       "בסיס טכני נכון לקידום אורגני (SEO)",
     ],
-    stack: "WCAG 2.2 AA / ת״י 5568 / Lighthouse / Core Web Vitals",
   },
 ];
 
@@ -73,7 +69,6 @@ export const timeServices: Service[] = [
       "תזכורות, אישורים והודעות ללקוחות",
       "דוחות וסיכומים שמגיעים אליכם בזמן קבוע",
     ],
-    stack: "Google Sheets / WhatsApp / PDF / APIs",
   },
   {
     id: "custom-tools",
@@ -87,7 +82,6 @@ export const timeServices: Service[] = [
       "הנתונים נשארים אצלכם, למשל בגוגל שיטס",
       "עלות תחזוקה נמוכה, לפעמים אפסית",
     ],
-    stack: "Next.js / TypeScript / Google Sheets API",
   },
 ];
 
@@ -115,9 +109,6 @@ export function ServiceRow({ service, index }: { service: Service; index: number
             </li>
           ))}
         </ul>
-        <p className="mt-8 font-mono text-xs text-fg-subtle" dir="ltr" style={{ textAlign: "right" }}>
-          {service.stack}
-        </p>
       </div>
     </Reveal>
   );

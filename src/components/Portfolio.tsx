@@ -106,9 +106,6 @@ export default function Portfolio() {
                         </div>
                         <div className={featured ? "md:col-span-8" : ""}>
                           <p className="max-w-[60ch] leading-relaxed text-fg-muted">{project.description}</p>
-                          <p className="mt-3 font-mono text-xs text-fg-subtle" dir="ltr" style={{ textAlign: "right" }}>
-                            {project.technologies.join(" / ")}
-                          </p>
                         </div>
                       </div>
                     </a>

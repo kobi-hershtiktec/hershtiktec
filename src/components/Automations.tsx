@@ -45,10 +45,10 @@ export default function Automations() {
               href={whatsappWith(solutionsWhatsappText)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
+              className="mt-10 inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-7 py-4 text-center text-base font-semibold leading-snug text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
               aria-label={`${CTA_AUTOMATION}: שיחה על אוטומציה לעסק בוואטסאפ (נפתח בחלון חדש)`}
             >
-              <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+              <WhatsappLogo size={24} weight="bold" aria-hidden="true" className="shrink-0" />
               {CTA_AUTOMATION}
             </a>
           </PageHeader>

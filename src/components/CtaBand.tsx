@@ -9,7 +9,7 @@ import { responsive } from "../img";
 export default function CtaBand() {
   return (
     <section className="px-4 pb-24 sm:px-6 md:pb-32 lg:px-8" aria-labelledby="cta-band-heading">
-      <Reveal className="relative mx-auto flex max-w-7xl items-center overflow-hidden rounded-2xl border border-line bg-ink-2 px-6 py-14 sm:px-12 md:min-h-[min(560px,calc(100dvh-10rem))] md:py-16">
+      <Reveal className="relative mx-auto flex max-w-7xl items-center overflow-hidden rounded-2xl border border-line bg-ink-2 px-5 py-14 sm:px-12 md:min-h-[min(560px,calc(100dvh-10rem))] md:py-16">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -top-40 left-[-10%] h-[520px] w-[720px] rounded-full bg-[radial-gradient(closest-side,rgb(76_201_220/0.18),transparent)]"
@@ -27,10 +27,10 @@ export default function CtaBand() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
+                className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-accent px-5 py-4 text-center sm:w-auto sm:px-7 text-base font-semibold leading-snug text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
                 aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
               >
-                <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+                <WhatsappLogo size={24} weight="bold" aria-hidden="true" className="shrink-0" />
                 {CTA_CONTACT}
               </a>
               <a href={PHONE_TEL} className="text-sm text-fg-muted transition-colors hover:text-fg">

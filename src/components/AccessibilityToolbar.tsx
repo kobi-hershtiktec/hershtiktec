@@ -82,12 +82,12 @@ export default function AccessibilityToolbar() {
         styleTag.id = styleId;
         styleTag.innerHTML = `
           body.accessibility-highlight-links a {
-            outline: 2px dashed #00f0ff !important;
+            outline: 2px dashed var(--color-accent) !important;
             outline-offset: 4px !important;
-            background-color: rgba(6, 182, 212, 0.15) !important;
-            color: #ffffff !important;
+            background-color: color-mix(in srgb, var(--color-accent) 15%, transparent) !important;
+            color: var(--color-fg) !important;
             text-decoration: underline !important;
-            text-decoration-color: #00f0ff !important;
+            text-decoration-color: var(--color-accent) !important;
           }
         `;
         document.head.appendChild(styleTag);
@@ -166,20 +166,20 @@ export default function AccessibilityToolbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="fixed inset-y-0 left-0 flex w-full max-w-sm flex-col text-white shadow-2xl border-r border-white/5 p-6 z-[10000] overflow-y-auto bg-ink-2"
+              className="fixed inset-y-0 left-0 flex w-full max-w-sm flex-col text-fg shadow-2xl border-r border-line p-6 z-[10000] overflow-y-auto bg-ink-2"
               role="dialog"
               aria-modal="true"
               aria-label="סרגל נגישות דיגיטלי"
             >
               {/* Header */}
-              <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-5">
+              <div className="flex items-center justify-between border-b border-line pb-4 mb-5">
                 <div className="flex items-center gap-2">
-                  <Accessibility className="h-6 w-6 text-cyan-400" />
+                  <Accessibility className="h-6 w-6 text-accent" />
                   <h2 className="text-xl font-bold font-display" id="accessibility-title">סרגל נגישות ואפשרויות תצוגה</h2>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="rounded-lg p-2 text-slate-400 hover:bg-white/5 hover:text-white transition-colors"
+                  className="rounded-lg p-2 text-fg-muted hover:bg-fg/5 hover:text-fg transition-colors"
                   aria-label="סגור תפריט נגישות"
                 >
                   <X className="h-5 w-5" />
@@ -187,7 +187,7 @@ export default function AccessibilityToolbar() {
               </div>
 
               {/* Instructions */}
-              <p className="text-xs text-slate-400 mb-6 bg-black/35 p-3 rounded-lg border border-white/5">
+              <p className="text-xs text-fg-muted mb-6 bg-fg/5 p-3 rounded-lg border border-line">
                 אתר זה מונגש במלואו לפי תקן נגישות <strong>ת&quot;י 5568</strong> והנחיות <strong>WCAG 2.2 AA</strong>. באפשרותכם להשתמש בהגדרות הבאות להתאמת חוויית הגלישה.
               </p>
 
@@ -195,18 +195,18 @@ export default function AccessibilityToolbar() {
               <div className="space-y-6 flex-1">
                 {/* 1. Font Size Control */}
                 <div className="space-y-2">
-                  <span className="block text-sm font-semibold text-slate-300">גודל גופן</span>
+                  <span className="block text-sm font-semibold text-fg">גודל גופן</span>
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => adjustFontSize(false)}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-white active:scale-95 transition-colors disabled:opacity-40"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-line-strong bg-fg/5 hover:bg-fg/10 text-fg active:scale-95 transition-colors disabled:opacity-40"
                       disabled={settings.fontSizeScale <= 0.9}
                       aria-label="הקטן גודל טקסט"
                     >
                       <ZoomOut className="h-5 w-5" />
                     </button>
                     <span 
-                      className="flex-1 text-center font-mono font-bold text-cyan-400" 
+                      className="flex-1 text-center font-mono font-bold text-accent" 
                       aria-live="polite"
                       aria-atomic="true"
                     >
@@ -214,7 +214,7 @@ export default function AccessibilityToolbar() {
                     </span>
                     <button
                       onClick={() => adjustFontSize(true)}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-white active:scale-95 transition-colors disabled:opacity-40"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-line-strong bg-fg/5 hover:bg-fg/10 text-fg active:scale-95 transition-colors disabled:opacity-40"
                       disabled={settings.fontSizeScale >= 1.3}
                       aria-label="הגדל גודל טקסט"
                     >
@@ -225,23 +225,23 @@ export default function AccessibilityToolbar() {
 
                 {/* 2. Visual Filters Grid */}
                 <div className="space-y-3">
-                  <span className="block text-sm font-semibold text-slate-300">התאמות חזותיות</span>
+                  <span className="block text-sm font-semibold text-fg">התאמות חזותיות</span>
                   
                   {/* Grayscale */}
                   <button
                     onClick={() => updateSetting("grayscale", !settings.grayscale)}
                     className={`flex w-full items-center justify-between rounded-lg p-3 border transition-all ${
                       settings.grayscale 
-                        ? "bg-cyan-400/10 border-cyan-400/60 text-white" 
-                        : "bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/30"
+                        ? "bg-accent/10 border-accent/60 text-fg" 
+                        : "bg-fg/5 border-line-strong text-fg hover:border-accent/30"
                     }`}
                     aria-pressed={settings.grayscale}
                   >
                     <div className="flex items-center gap-3">
-                      <Eye className="h-5 w-5 text-slate-400" />
+                      <Eye className="h-5 w-5 text-fg-muted" />
                       <span className="text-sm font-medium">מונוכרום (גווני אפור)</span>
                     </div>
-                    {settings.grayscale && <Check className="h-5 w-5 text-cyan-400" />}
+                    {settings.grayscale && <Check className="h-5 w-5 text-accent" />}
                   </button>
 
                   {/* High Contrast */}
@@ -249,16 +249,16 @@ export default function AccessibilityToolbar() {
                     onClick={() => updateSetting("highContrast", !settings.highContrast)}
                     className={`flex w-full items-center justify-between rounded-lg p-3 border transition-all ${
                       settings.highContrast 
-                        ? "bg-cyan-400/10 border-cyan-400/60 text-white" 
-                        : "bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/30"
+                        ? "bg-accent/10 border-accent/60 text-fg" 
+                        : "bg-fg/5 border-line-strong text-fg hover:border-accent/30"
                     }`}
                     aria-pressed={settings.highContrast}
                   >
                     <div className="flex items-center gap-3">
-                      <Eye className="h-5 w-5 text-slate-400" />
+                      <Eye className="h-5 w-5 text-fg-muted" />
                       <span className="text-sm font-medium">ניגודיות גבוהה</span>
                     </div>
-                    {settings.highContrast && <Check className="h-5 w-5 text-cyan-400" />}
+                    {settings.highContrast && <Check className="h-5 w-5 text-accent" />}
                   </button>
 
                   {/* Color Invert */}
@@ -266,38 +266,38 @@ export default function AccessibilityToolbar() {
                     onClick={() => updateSetting("invert", !settings.invert)}
                     className={`flex w-full items-center justify-between rounded-lg p-3 border transition-all ${
                       settings.invert 
-                        ? "bg-cyan-400/10 border-cyan-400/60 text-white" 
-                        : "bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/30"
+                        ? "bg-accent/10 border-accent/60 text-fg" 
+                        : "bg-fg/5 border-line-strong text-fg hover:border-accent/30"
                     }`}
                     aria-pressed={settings.invert}
                   >
                     <div className="flex items-center gap-3">
-                      <Eye className="h-5 w-5 text-slate-400" />
+                      <Eye className="h-5 w-5 text-fg-muted" />
                       <span className="text-sm font-medium">היפוך צבעים</span>
                     </div>
-                    {settings.invert && <Check className="h-5 w-5 text-cyan-400" />}
+                    {settings.invert && <Check className="h-5 w-5 text-accent" />}
                   </button>
                 </div>
 
                 {/* 3. Text & Interaction Enhancements */}
                 <div className="space-y-3">
-                  <span className="block text-sm font-semibold text-slate-300">שיפורי קריאות ותנועה</span>
+                  <span className="block text-sm font-semibold text-fg">שיפורי קריאות ותנועה</span>
 
                   {/* Readable Font */}
                   <button
                     onClick={() => updateSetting("readableFont", !settings.readableFont)}
                     className={`flex w-full items-center justify-between rounded-lg p-3 border transition-all ${
                       settings.readableFont 
-                        ? "bg-cyan-400/10 border-cyan-400/60 text-white" 
-                        : "bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/30"
+                        ? "bg-accent/10 border-accent/60 text-fg" 
+                        : "bg-fg/5 border-line-strong text-fg hover:border-accent/30"
                     }`}
                     aria-pressed={settings.readableFont}
                   >
                     <div className="flex items-center gap-3">
-                      <Type className="h-5 w-5 text-slate-400" />
+                      <Type className="h-5 w-5 text-fg-muted" />
                       <span className="text-sm font-medium">גופן מערכת פשוט (קריא)</span>
                     </div>
-                    {settings.readableFont && <Check className="h-5 w-5 text-cyan-400" />}
+                    {settings.readableFont && <Check className="h-5 w-5 text-accent" />}
                   </button>
 
                   {/* Highlight Links */}
@@ -305,16 +305,16 @@ export default function AccessibilityToolbar() {
                     onClick={() => updateSetting("highlightLinks", !settings.highlightLinks)}
                     className={`flex w-full items-center justify-between rounded-lg p-3 border transition-all ${
                       settings.highlightLinks 
-                        ? "bg-cyan-400/10 border-cyan-400/60 text-white" 
-                        : "bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/30"
+                        ? "bg-accent/10 border-accent/60 text-fg" 
+                        : "bg-fg/5 border-line-strong text-fg hover:border-accent/30"
                     }`}
                     aria-pressed={settings.highlightLinks}
                   >
                     <div className="flex items-center gap-3">
-                      <Link2 className="h-5 w-5 text-slate-400" />
+                      <Link2 className="h-5 w-5 text-fg-muted" />
                       <span className="text-sm font-medium">הדגשת קישורים וכפתורים</span>
                     </div>
-                    {settings.highlightLinks && <Check className="h-5 w-5 text-cyan-400" />}
+                    {settings.highlightLinks && <Check className="h-5 w-5 text-accent" />}
                   </button>
 
                   {/* Keyboard Navigation Helper */}
@@ -322,16 +322,16 @@ export default function AccessibilityToolbar() {
                     onClick={() => updateSetting("keyboardGuide", !settings.keyboardGuide)}
                     className={`flex w-full items-center justify-between rounded-lg p-3 border transition-all ${
                       settings.keyboardGuide 
-                        ? "bg-cyan-400/10 border-cyan-400/60 text-white" 
-                        : "bg-white/5 border-white/10 text-slate-300 hover:border-cyan-400/30"
+                        ? "bg-accent/10 border-accent/60 text-fg" 
+                        : "bg-fg/5 border-line-strong text-fg hover:border-accent/30"
                     }`}
                     aria-pressed={settings.keyboardGuide}
                   >
                     <div className="flex items-center gap-3">
-                      <Keyboard className="h-5 w-5 text-slate-400" />
+                      <Keyboard className="h-5 w-5 text-fg-muted" />
                       <span className="text-sm font-medium">מדריך ניווט למשתמשי מקלדת</span>
                     </div>
-                    {settings.keyboardGuide && <Check className="h-5 w-5 text-cyan-400" />}
+                    {settings.keyboardGuide && <Check className="h-5 w-5 text-accent" />}
                   </button>
                 </div>
 
@@ -340,9 +340,9 @@ export default function AccessibilityToolbar() {
                   <motion.div 
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    className="p-3 bg-slate-950 rounded-lg text-xs leading-relaxed text-slate-300 border border-slate-800 space-y-1.5"
+                    className="p-3 bg-ink rounded-lg text-xs leading-relaxed text-fg border border-line space-y-1.5"
                   >
-                    <div className="font-bold text-cyan-400 mb-1">מקשי קיצור לניווט המהיר:</div>
+                    <div className="font-bold text-accent mb-1">מקשי קיצור לניווט המהיר:</div>
                     <p>⌨️ השתמשו ב-<strong>Tab</strong> כדי לעבור בין קישורים וכפתורים קדימה.</p>
                     <p>⌨️ השתמשו ב-<strong>Shift + Tab</strong> כדי לעבור ביניהם אחורה.</p>
                     <p>⌨️ לחצו על <strong>Enter</strong> או <strong>Space</strong> להפעלה.</p>
@@ -353,10 +353,10 @@ export default function AccessibilityToolbar() {
               </div>
 
               {/* Reset Section */}
-              <div className="border-t border-slate-800 pt-4 mt-6">
+              <div className="border-t border-line pt-4 mt-6">
                 <button
                   onClick={resetAll}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 text-white font-medium py-2.5 px-4 transition-colors hover:bg-white/10 text-sm"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-line-strong bg-fg/5 text-fg font-medium py-2.5 px-4 transition-colors hover:bg-fg/10 text-sm"
                 >
                   <RefreshCw className="h-4 w-4" />
                   איפוס כל ההגדרות לברירת מחדל
@@ -364,7 +364,7 @@ export default function AccessibilityToolbar() {
                 <a
                   href="/accessibility/"
                   onClick={() => setIsOpen(false)}
-                  className="mt-3 block text-center text-sm text-cyan-300 underline-offset-4 hover:underline"
+                  className="mt-3 block text-center text-sm text-accent underline-offset-4 hover:underline"
                 >
                   להצהרת הנגישות המלאה
                 </a>

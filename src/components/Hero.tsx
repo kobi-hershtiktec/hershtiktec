@@ -95,7 +95,7 @@ function WorkShowcase() {
             >
               <span
                 className={`block h-[3px] rounded-full transition-all duration-500 ease-out-expo ${
-                  i === index ? "w-7 bg-accent" : "w-3.5 bg-white/20 group-hover:bg-white/40"
+                  i === index ? "w-7 bg-accent" : "w-3.5 bg-fg/20 group-hover:bg-fg/40"
                 }`}
               />
             </button>
@@ -157,7 +157,7 @@ export default function Hero() {
               className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent transition-[transform,background-color] duration-300 ease-out-expo hover:bg-accent-strong active:scale-[0.98]"
               aria-label={`${CTA_CONTACT} בוואטסאפ (נפתח בחלון חדש)`}
             >
-              <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+              <WhatsappLogo size={24} weight="bold" aria-hidden="true" className="shrink-0" />
               {CTA_CONTACT}
             </a>
             <a

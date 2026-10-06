@@ -5,6 +5,19 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0b0d10" />
+    <!-- Theme before first paint: saved choice, else the device setting (see ThemeToggle.tsx) -->
+    <script>
+      (function () {
+        var t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", t === "light" ? "#f5f7f9" : "#0b0d10");
+      })();
+    </script>
 
     <!-- Per-route values below are replaced at runtime (src/head.ts) and baked in by scripts/prerender.mjs -->
     <title>HERSHTIKTEC | בניית אתרים לעסקים קטנים ואוטומציות לעסק</title>

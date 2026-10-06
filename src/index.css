@@ -10,8 +10,9 @@
 @import "tailwindcss";
 
 /*
- * Design tokens. The brand is dark by identity (logo is cyan on near-black),
- * so the site ships a single dark theme. One accent (logo cyan, desaturated),
+ * Design tokens. Dark is the brand default (logo is cyan on near-black); a light
+ * theme overrides the same tokens under [data-theme="light"] (set before paint by
+ * the inline script in index.html). One accent (logo cyan, desaturated),
  * one neutral family (cool graphite). Radius system: interactive = pill,
  * surfaces/media = 16px (rounded-2xl).
  */
@@ -31,12 +32,33 @@
   --color-accent: #4cc9dc;
   --color-accent-strong: #7ad9e8;
   --color-on-accent: #04191d;
+  --color-danger: #f87171;
 
   /* Legacy aliases still referenced by the accessibility toolbar */
   --color-brand-bg: #0b0d10;
   --color-brand-cyan: #4cc9dc;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* light: utilities, e.g. "hidden light:block" */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* Light theme: same roles, cool off-white neutrals, deeper cyan so accent text passes AA on white */
+[data-theme="light"] {
+  --color-ink: #f5f7f9;
+  --color-ink-2: #ffffff;
+  --color-ink-3: #eceff3;
+  --color-line: rgb(15 23 32 / 0.09);
+  --color-line-strong: rgb(15 23 32 / 0.16);
+  --color-fg: #111820;
+  --color-fg-muted: #4b5664;
+  --color-fg-subtle: #5d6876;
+  --color-accent: #0b7d91;
+  --color-accent-strong: #096a7b;
+  --color-on-accent: #ffffff;
+  --color-danger: #c42b2b;
+  color-scheme: light;
 }
 
 html {
@@ -52,6 +74,8 @@ html {
 body {
   background: var(--color-ink);
   color: var(--color-fg);
+  /* Decorative glows must never widen the page (mobile browsers zoom out when they do) */
+  overflow-x: clip;
 }
 
 /* Film grain on a fixed, non-interactive layer (never on scrolling content) */
@@ -77,13 +101,13 @@ p {
 }
 
 ::selection {
-  background: rgb(76 201 220 / 0.25);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+  color: var(--color-fg);
 }
 
 /* Frosted nav bar, solid fallback when transparency is reduced */
 .nav-glass {
-  background: rgb(11 13 16 / 0.72);
+  background: color-mix(in srgb, var(--color-ink) 72%, transparent);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
 }
@@ -136,11 +160,11 @@ body.accessibility-readable-font * {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262b33;
+  background: var(--color-line-strong);
   border-radius: 999px;
   border: 2px solid var(--color-ink);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #353c46;
+  background: var(--color-fg-subtle);
 }
