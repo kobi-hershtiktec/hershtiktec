@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CheckCircle, PaperPlaneTilt, WarningCircle } from "@phosphor-icons/react";
 import { EMAIL } from "../site";
+import { track } from "../analytics";
 
 // Static site: submissions are relayed by FormSubmit (formsubmit.co) to the business inbox.
 // The first submission ever triggers a one-time activation email to EMAIL.
@@ -41,6 +42,7 @@ export default function ContactForm() {
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
+      track("generate_lead", { method: "contact_form" });
       form.reset();
     } catch {
       setStatus("error");

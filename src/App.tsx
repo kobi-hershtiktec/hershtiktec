@@ -15,6 +15,7 @@ import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AccessibilityToolbar from "./components/AccessibilityToolbar";
+import CookieNotice from "./components/CookieNotice";
 import AccessibilityStatement from "./components/AccessibilityStatement";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CaseFruit from "./components/CaseFruit";
@@ -24,6 +25,7 @@ import { LEGACY_HASHES, RouteKey, routeForPath } from "./routes";
 import { applyHead } from "./head";
 import { introAllowed, markNavigated } from "./intro";
 import { faqs } from "./faqs";
+import { initAnalytics, trackContactClick, trackPageView } from "./analytics";
 
 const pages: Record<RouteKey, () => React.ReactElement> = {
   home: Home,
@@ -71,9 +73,10 @@ export default function App() {
   // Client-side navigation for internal links; everything else behaves normally.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = (e.target as HTMLElement).closest("a");
       const href = a?.getAttribute("href");
+      if (href) trackContactClick(href);
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       if (!a || !href || !href.startsWith("/") || a.target === "_blank") return;
       e.preventDefault();
       if (href !== window.location.pathname) navigate(href);
@@ -93,6 +96,18 @@ export default function App() {
   useEffect(() => {
     applyHead(route, route.key === "faq" ? faqJsonLd : null);
   }, [route]);
+
+  useEffect(initAnalytics, []);
+
+  // First page view is reported by the GA config call; report client-side navigations after it.
+  const firstView = React.useRef(true);
+  useEffect(() => {
+    if (firstView.current) {
+      firstView.current = false;
+      return;
+    }
+    trackPageView(route.path);
+  }, [route.path]);
 
   const Page = pages[route.key];
 
@@ -124,6 +139,7 @@ export default function App() {
       <Footer />
 
       <AccessibilityToolbar />
+      <CookieNotice />
     </div>
   );
 }

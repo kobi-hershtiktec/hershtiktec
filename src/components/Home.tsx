@@ -5,43 +5,12 @@ import CtaBand from "./CtaBand";
 import Process from "./Process";
 import Solutions from "./Solutions";
 import Reveal from "./Reveal";
-import CountUp from "./CountUp";
 import projectsData from "../projects.json";
 import { Project } from "../types";
 import { CATEGORY_NAMES } from "../site";
 import { responsive } from "../img";
 
 const projects = projectsData as Project[];
-
-const proofPoints = [
-  { value: "נגיש", label: "לפי החוק ותקן ישראלי 5568, מהיום הראשון" },
-  { value: "95+", label: "ציון Google PageSpeed בנייד" },
-  { value: "0", label: "תבניות. כל אתר נכתב מאפס" },
-];
-
-function ProofStrip() {
-  return (
-    <section aria-label="עקרונות העבודה" className="px-4 sm:px-6 lg:px-8">
-      <Reveal className="mx-auto grid max-w-7xl border-y border-line sm:grid-cols-3">
-        {proofPoints.map((p, i) => (
-          <div
-            key={p.value}
-            className={`flex items-baseline gap-4 py-7 sm:flex-col sm:gap-2 sm:py-10 sm:pe-8 ${
-              i > 0 ? "border-t border-line sm:border-t-0 sm:border-r sm:ps-8" : ""
-            }`}
-          >
-            <CountUp
-              value={p.value}
-              className="shrink-0 text-2xl font-semibold tabular-nums text-fg md:text-4xl"
-              dir={/^[0-9]/.test(p.value) ? "ltr" : undefined}
-            />
-            <span className="text-sm leading-relaxed text-fg-muted md:text-base">{p.label}</span>
-          </div>
-        ))}
-      </Reveal>
-    </section>
-  );
-}
 
 function WorkTile({ project, large = false }: { project: Project; large?: boolean }) {
   return (
@@ -121,7 +90,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ProofStrip />
       <SelectedWork />
       <Solutions />
       <Process />

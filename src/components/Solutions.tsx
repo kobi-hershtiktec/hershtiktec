@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowLeft, WhatsappLogo } from "@phosphor-icons/react";
 import Reveal from "./Reveal";
-import { solutionIcons } from "./solutionIcons";
 import CaseStudy from "./CaseStudy";
 import { solutionExamples, solutionsWhatsappText } from "../solutions";
 import { CTA_AUTOMATION, whatsappWith } from "../site";
@@ -44,10 +43,6 @@ export default function Solutions() {
           <ul className="grid gap-x-10 sm:grid-cols-2 lg:col-span-7">
             {solutionExamples.map((ex, i) => (
               <Reveal as="li" key={ex.pain} delay={i * 0.06} className="border-t border-line py-7">
-                {(() => {
-                  const Icon = solutionIcons[i];
-                  return <Icon size={26} weight="duotone" className="mb-4 text-accent" aria-hidden="true" />;
-                })()}
                 <p className="text-lg font-medium text-fg">{ex.pain}</p>
                 <p className="mt-2 leading-relaxed text-fg-muted">{ex.result}</p>
               </Reveal>

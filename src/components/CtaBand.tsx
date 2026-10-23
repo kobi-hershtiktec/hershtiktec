@@ -10,10 +10,6 @@ export default function CtaBand() {
   return (
     <section className="px-4 pb-24 sm:px-6 md:pb-32 lg:px-8" aria-labelledby="cta-band-heading">
       <Reveal className="relative mx-auto flex max-w-7xl items-center overflow-hidden rounded-2xl border border-line bg-ink-2 px-5 py-14 sm:px-12 md:min-h-[min(560px,calc(100dvh-10rem))] md:py-16">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-[-10%] h-[520px] w-[720px] rounded-full bg-[radial-gradient(closest-side,rgb(76_201_220/0.18),transparent)]"
-        />
         <div className="relative grid w-full items-center gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
             <h2 id="cta-band-heading" className="text-3xl font-semibold leading-[1.12] tracking-tight text-fg md:text-6xl">
@@ -41,10 +37,6 @@ export default function CtaBand() {
 
           <figure className="hidden md:col-span-5 md:flex md:flex-col md:items-center">
             <div className="relative w-[min(300px,100%)]">
-              <div
-                aria-hidden="true"
-                className="absolute inset-[-14%] rounded-full bg-[radial-gradient(closest-side,rgb(76_201_220/0.22),transparent)]"
-              />
               <img
                 {...responsive("kobi", "300px")}
                 width={953}

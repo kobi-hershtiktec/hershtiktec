@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from "../site";
+import { analyticsEnabled, resetConsent } from "../analytics";
 
 const siteLinks = [
   { name: "ראשי", href: "/" },
@@ -54,6 +55,13 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              {analyticsEnabled() && (
+                <li>
+                  <button type="button" onClick={resetConsent} className="text-fg-muted transition-colors hover:text-fg">
+                    הגדרות עוגיות
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 

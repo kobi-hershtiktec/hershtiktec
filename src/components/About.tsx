@@ -74,10 +74,6 @@ export default function About() {
           <Reveal delay={0.1} className="lg:col-span-5 lg:pt-4">
             <figure className="mx-auto max-w-sm lg:mr-auto lg:ml-0">
               <div className="relative aspect-square">
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-[-12%] rounded-full max-sm:inset-[-4%] bg-[radial-gradient(closest-side,rgb(76_201_220/0.14),transparent)]"
-                />
                 <img
                   {...responsive("kobi", "(min-width: 1024px) 384px, 90vw")}
                   alt="קובי הרשטיק, מייסד HERSHTIKTEC"

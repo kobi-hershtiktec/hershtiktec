@@ -10,9 +10,9 @@
 @import "tailwindcss";
 
 /*
- * Design tokens. Dark is the brand default (logo is cyan on near-black); a light
- * theme overrides the same tokens under [data-theme="light"] (set before paint by
- * the inline script in index.html). One accent (logo cyan, desaturated),
+ * Design tokens. Light is the default look (set before paint by the inline script in
+ * index.html); the base values below are the dark theme, and [data-theme="light"]
+ * overrides the same tokens. One accent (logo cyan, desaturated),
  * one neutral family (cool graphite). Radius system: interactive = pill,
  * surfaces/media = 16px (rounded-2xl).
  */
@@ -78,7 +78,7 @@ body {
   overflow-x: clip;
 }
 
-/* Film grain on a fixed, non-interactive layer (never on scrolling content) */
+/* Film grain on a fixed, non-interactive layer (never on scrolling content); dark theme only */
 body::after {
   content: "";
   position: fixed;
@@ -87,6 +87,10 @@ body::after {
   pointer-events: none;
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+[data-theme="light"] body::after {
+  display: none;
 }
 
 h1,
